@@ -10,15 +10,25 @@
         body{
             font-family: Arial;
         }
+        .Whole{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0px;
+        }
+        .buttons{
+            z-index: 2;
+        }
         #myContainer {
             width: 400px;
             height: 400px;
+            top: 0;
             position: absolute;
             background-image: url("road small.jpg");
         }
-        .Controller{
+        footer{
             background-color: rgba(0, 0, 0, 0.467);
-            width: 30vw;
+            width: 900px;
             height: 200px;
             position: absolute;
             bottom: 0;
@@ -37,33 +47,47 @@
             font-size: 11px;
         }
 
+        #TrafficLight1, #TrafficLight2, #TrafficLight3 ,#TrafficLight4{
+            width: 400px;
+            height: 400px;
+            top: 0;
+            position: absolute;
+            z-index: 3;
+        }
+
     </style>
 </head>
 <body onload="Start()">
 
-    
-    <input onclick="change()" type="button" value="Punainen" id="myButton1"/>
-    <input onclick="GFG_Fun()" type="button" value="Clone car" id="myButton2"/>
-    
-    <div id ="myContainer">
-    
-        <kuva id="bgId"></kuva>
-        <button id="button1" onclick="GFG_Fun"></button>
-
+    <div class="Whole">
+        <div class="buttons">    
+            <input onclick="change()" type="button" value="Punainen" id="myButton1"/>
+            <input onclick="GFG_Fun()" type="button" value="Clone car" id="myButton2"/>
+        </div>
+        <div id ="myContainer">
+            <kuva id="bgId"></kuva> 
+        </div>
+        <div id="TrafficLight1"></div>
+        <div id="TrafficLight2"></div>
+        <div id="TrafficLight3"></div>
+        <div id="TrafficLight4"></div>
         
+        <footer>
+    
+            <button value="11" id="TrafficButton11" onclick="Start11()">Vihreä</button>
+            <button value="12" id="TrafficButton11" onclick="Start12()">Punainen</button>
+            <button value="21" id="TrafficButton11" onclick="Start21()">Vihreä</button>
+            <button value="22" id="TrafficButton11" onclick="Start22()">Punainen</button>
+            <button value="31" id="TrafficButton11" onclick="Start31()">Vihreä</button>
+            <button value="32" id="TrafficButton11" onclick="Start32()">Punainen</button>
+            <button value="41" id="TrafficButton11" onclick="Start41()">Vihreä</button>
+            <button value="42" id="TrafficButton11" onclick="Start42()">Punainen</button>
+            
+        </div>
+
+
 
     </div>
-
-    <div class="Controller">
-  
-        <button value="11" id="TrafficButton11" onclick="TrafficLight()">Press</button>
-        <button value="12" id="TrafficButton11" onclick="TrafficLight()">Press</button>
-        
-    </div>
-
-
-
-
 
 </body>
 </html>
