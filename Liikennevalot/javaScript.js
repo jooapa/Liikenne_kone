@@ -318,10 +318,10 @@ function CloneCar() {
 	}
 	
 	if(rng == 3 && car4Exist == false) {
-
+		Car4Rotation = 90
 		car4Exist = true;
 		Car4.imgCar4.style.transform = "translate(-20px, 215px)";
-		Car4.imgCar4.style.transform += "rotate(90deg)";
+		Car4.imgCar4.style.transform += "rotate("+Car4Rotation+"deg)";
 		document.getElementById('myContainer').appendChild(Car4.imgCar4);
 		
 		clearInterval(car4id);
@@ -331,7 +331,9 @@ function CloneCar() {
 				clearInterval(car4id);
 				console.log("Stopped car4");
 				car4Stop = true;
-				//turn41();
+				if (lightSpot4 == 1){
+					turn41();
+				}
 		} else {
 			Car4.pos++; 
 			Car4.imgCar4.style.left = Car4.pos + 'px'; 
@@ -340,7 +342,39 @@ function CloneCar() {
 		}
 	}
 } 
+Car4InterHalfDone = false
+function turn41() {
+	if(Car4InterHalfDone == false){
+		if(lightSpot4 == 1 && Car4.pos == 120) {
+			clearInterval(car4id);
+			car4id = setInterval(car4frame, 10);
+			function car4frame() {
+				if (Car4.pos == 180) {
+					console.log("Stopped car4 nyt");
+					Car4InterHalfDone = true
+					Car4.pos = 0;
+					if (Car4.pos > 180) {
+						car4Stop = true;
+						Car4InterHalfDone = true
+						console.log("pro")
+						clearInterval(car4id);
+					}
+					else{
+						console.log("Stopped car4");
+						Car4.imgCar4.style.top = Car4.pos + 'px';
+						Car4.pos++;
+					}
 
+				} else {
+					Car4.pos++; 
+					Car4.imgCar4.style.left = Car4.pos + 'px';
+					Car4.imgCar4.style.transform += "rotate("+ 1.5 +"deg)"; 
+					car4Stop = false
+				}
+			}
+		}
+	}
+}
 Car4 = {
 	pos: 0,
 	imgCar4: document.createElement('img'),
@@ -349,25 +383,6 @@ Car4 = {
 	h: "50px",
 	p: "absolute",
 }
-
-function turn41() {
-	if(lightSpot4 == 1) {
-		clearInterval(car4id);
-		car4id = setInterval(car4frame, 10);
-		function car4frame() {
-			if (Car4.pos == 220) {
-				clearInterval(car4id);
-				console.log("Stopped car4"); 
-				car4Stop = true;
-			} else {
-				Car4.pos++; 
-				Car4.imgCar4.style.left = Car4.pos + 'px'; 
-				car4Stop = false
-			}
-		}
-	}
-}
-
 
 //road system  car "1-4" turning to road "1-4"
 var car1Turn2 = 0;
@@ -386,8 +401,12 @@ var car4Turn1 = 0;
 var car4Turn2 = 0;
 var car4Turn4 = 0;
 
+
+
+
 //Tee ohjelma, jolla ohjaat kuvan mukaisen 4 tien risteyksen liikennevaloja.
 //Huomio liikenneturvallisuus ja ajovuorot. Valojen ohjaus käynnistetään ja 
 //pysäytetään hiirellä nappia painamalla. Havainnollista jollakin tavalla milloin 
 //kelläkin on ajovuoro ja milloin odotusvuoro. Käytä vähintään kaksia nuolivaloja ja ajastusta. 
-//Huomioiden liikenteen joustavuus ja turvallisuus mahdollista liikennevalojen ohjauksella ajaminen useammasta suunnasta samanaikaisesti.
+//Huomioiden liikenteen joustavuus ja turvallisuus mahdollista liikennevalojen 
+//ohjauksella ajaminen useammasta suunnasta samanaikaisesti.
