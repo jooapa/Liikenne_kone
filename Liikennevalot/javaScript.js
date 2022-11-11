@@ -232,6 +232,7 @@ function CloneCar() {
 
 	//rng = Math.floor(Math.random() * 4);
 	rng = 3
+	
 
 	console.log(rng)
 	if(rng == 0 && car1Exist == false){
