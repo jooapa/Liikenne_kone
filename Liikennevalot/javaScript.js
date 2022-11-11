@@ -221,25 +221,47 @@ function Start41() {
 function Start42() {
 	lightSpot4 = 1;
 	Start();
+	turn41();
 }
 
 function CloneCar() {
-	var img = document.createElement('img');
-	img.src = 'car.png';
-	img.style.width = "auto";
-	img.style.height = "50px";
-	img.style.position = "absolute";
+	var imgCar1 = document.createElement('img');
+	imgCar1.src = 'car.png';
+	imgCar1.style.width = "auto";
+	imgCar1.style.height = "50px";
+	imgCar1.style.position = "absolute";
+	
+	var imgCar2 = document.createElement('img');
+	imgCar2.src = 'car.png';
+	imgCar2.style.width = "auto";
+	imgCar2.style.height = "50px";
+	imgCar2.style.position = "absolute";
+
+	var imgCar3 = document.createElement('img');
+	imgCar3.src = 'car.png';
+	imgCar3.style.width = "auto";
+	imgCar3.style.height = "50px";
+	imgCar3.style.position = "absolute";
+	
+	Car4.imgCar4.src = Car4.pic; 
+	Car4.imgCar4.style.width = Car4.w
+	Car4.imgCar4.style.height = Car4.h
+	Car4.imgCar4.style.position = Car4.p
+
+
+
 
 	//rng = Math.floor(Math.random() * 4);
 	rng = 3
 	
 
+
 	console.log(rng)
 	if(rng == 0 && car1Exist == false){
 		let pos = 0;
 		car1Exist = true;
-		img.style.transform = "translate(220px, 400px)";
-		document.getElementById('myContainer').appendChild(img);
+		imgCar1.style.transform = "translate(220px, 400px)";
+		document.getElementById('myContainer').appendChild(imgCar1);
 		
 		clearInterval(car1id);
 		car1id = setInterval(car1frame, 10);
@@ -251,7 +273,7 @@ function CloneCar() {
 				car1Stop = true
 			} else {
 				pos++; 
-				img.style.top = -pos + 'px'; 
+				imgCar1.style.top = -pos + 'px'; 
 				car1Stop = false
 			}
 		}
@@ -259,9 +281,9 @@ function CloneCar() {
 
 	if(rng == 1 && car2Exist == false) {
 		let pos = 0;car2Exist = true;
-		img.style.transform = "translate(420px, 150px)";
-		img.style.transform += "rotate(-90deg)";
-		document.getElementById('myContainer').appendChild(img);
+		imgCar2.style.transform = "translate(420px, 150px)";
+		imgCar2.style.transform += "rotate(-90deg)";
+		document.getElementById('myContainer').appendChild(imgCar2);
 		
 		clearInterval(car2id);
 		car2id = setInterval(car2frame, 10);
@@ -272,7 +294,7 @@ function CloneCar() {
 				console.log("Stopped"); car2Stop = true
 			} else {
 				pos++; 
-				img.style.left = -pos + 'px'; car2Stop = false
+				imgCar2.style.left = -pos + 'px'; car2Stop = false
 			}
 		}
 	}
@@ -296,39 +318,55 @@ function CloneCar() {
 	}
 	
 	if(rng == 3 && car4Exist == false) {
-		let pos = 0;car4Exist = true;
-		img.style.transform = "translate(-20px, 215px)";
-		img.style.transform += "rotate(90deg)";
-		document.getElementById('myContainer').appendChild(img);
-		
-		clearInterval(car4id);car4id = setInterval(car4frame, 10);
-		function car4frame() {
-			if (pos == 120) {
-				clearInterval(car4id);
-				console.log("Stopped car4"); car4Stop = true; turn41();
-		} else {
-			pos++; 
-			img.style.left = pos + 'px'; car4Stop = false
-			}
-		}
 
-		function turn41() {
-			if(lightSpot4 == 1) {
-				clearInterval(car4id);car4id = setInterval(car4frame, 10);
-				function car4frame() {
-					if (pos == 220) {
-						clearInterval(car4id);
-							console.log("Stopped car4"); car4Stop = true;
-					} else {
-						pos++; 
-						img.style.left = pos + 'px'; car4Stop = false
-					}
-				}
+		car4Exist = true;
+		Car4.imgCar4.style.transform = "translate(-20px, 215px)";
+		Car4.imgCar4.style.transform += "rotate(90deg)";
+		document.getElementById('myContainer').appendChild(Car4.imgCar4);
+		
+		clearInterval(car4id);
+		car4id = setInterval(car4frame, 10);
+		function car4frame() {
+			if (Car4.pos == 120) {
+				clearInterval(car4id);
+				console.log("Stopped car4");
+				car4Stop = true;
+				//turn41();
+		} else {
+			Car4.pos++; 
+			Car4.imgCar4.style.left = Car4.pos + 'px'; 
+			car4Stop = false
 			}
 		}
 	}
 } 
 
+Car4 = {
+	pos: 0,
+	imgCar4: document.createElement('img'),
+	pic: 'car.png',
+	w: "auto",
+	h: "50px",
+	p: "absolute",
+}
+
+function turn41() {
+	if(lightSpot4 == 1) {
+		clearInterval(car4id);
+		car4id = setInterval(car4frame, 10);
+		function car4frame() {
+			if (Car4.pos == 220) {
+				clearInterval(car4id);
+				console.log("Stopped car4"); 
+				car4Stop = true;
+			} else {
+				Car4.pos++; 
+				Car4.imgCar4.style.left = Car4.pos + 'px'; 
+				car4Stop = false
+			}
+		}
+	}
+}
 
 
 //road system  car "1-4" turning to road "1-4"
@@ -336,7 +374,7 @@ var car1Turn2 = 0;
 var car1Turn3 = 0;
 var car1Turn4 = 0;
 
-var car2Turn3 = 1;
+var car2Turn3 = 0;
 var car2Turn4 = 0;
 var car2Turn1 = 0;
 
