@@ -29,15 +29,52 @@ const sleep = (time) => {
 
 
 
-	function change(){
+	function change1(){
 
-		var elem = document.getElementById("myButton1");
+		var elem = document.getElementById("TrafficButton1");
 		if (elem.value=="Punainen"){
-			elem.value = "Vihreä";
+			elem.value = "--Vihreä--";
+			Start42();
 		}
 		else{
 			elem.value = "Punainen";
-			imgContainer.appendChild(sourceImage.cloneNode(true));
+			Start41();
+		} 
+	}	
+	function change2(){
+
+		var elem = document.getElementById("TrafficButton2");
+		if (elem.value=="Punainen"){
+			elem.value = "--Vihreä--";
+			Start32();
+		}
+		else{
+			elem.value = "Punainen";
+			Start31();
+			} 
+	}	
+	function change3(){
+
+		var elem = document.getElementById("TrafficButton3");
+		if (elem.value=="Punainen"){
+			elem.value = "--Vihreä--";
+			Start22();
+		}
+		else{
+			elem.value = "Punainen";
+			Start21();
+		} 
+	}	
+	function change4(){
+
+		var elem = document.getElementById("TrafficButton4");
+		if (elem.value=="Punainen"){
+			elem.value = "--Vihreä--";
+			Start12();
+		}
+		else{
+			elem.value = "Punainen";
+			Start11();		
 		} 
 	}	
 	
@@ -45,7 +82,7 @@ const sleep = (time) => {
 		
 		var imgLight1 = document.createElement('img');
 		imgLight1.src = "lightc.png";
-		imgLight1.style.transform = "translate(260px, 280px)";
+		imgLight1.style.transform = "translate(250px, 280px)";
 		imgLight1.style.transform += "rotate(90deg)";
 		imgLight1.style.width = "auto";
 		imgLight1.style.height = "50px";
@@ -54,7 +91,7 @@ const sleep = (time) => {
 
 		var imgLight2 = document.createElement('img');
 		imgLight2.src = "lightc.png";
-		imgLight2.style.transform = "translate(280px, 105px)";
+		imgLight2.style.transform = "translate(280px, 100px)";
 		imgLight2.style.transform += "rotate(0deg)";
 		imgLight2.style.width = "auto";
 		imgLight2.style.height = "50px";
@@ -63,7 +100,7 @@ const sleep = (time) => {
 
 		var imgLight3 = document.createElement('img');
 		imgLight3.src = "lightc.png";
-		imgLight3.style.transform = "translate(105px, 90px)";
+		imgLight3.style.transform = "translate(100px, 80px)";
 		imgLight3.style.transform += "rotate(-90deg)";
 		imgLight3.style.width = "auto";
 		imgLight3.style.height = "50px";
@@ -72,7 +109,7 @@ const sleep = (time) => {
 
 		var imgLight4 = document.createElement('img');
 		imgLight4.src = "lightc.png";
-		imgLight4.style.transform = "translate(85px, 260px)";
+		imgLight4.style.transform = "translate(80px, 250px)";
 		imgLight4.style.transform += "rotate(180deg)";
 		imgLight4.style.width = "auto";
 		imgLight4.style.height = "50px";
@@ -85,17 +122,17 @@ const sleep = (time) => {
 			if(FirstTimeGOingThrough1 == 0){FirstTimeGOingThrough1 = 1
 				document.getElementById("TrafficLight1").removeChild(olddata1);
 			}
-			imgLight1.style.filter += "hue-rotate(30deg)";
+			imgLight1.style.filter += "hue-rotate(290deg)";
 			document.getElementById('TrafficLight1').appendChild(imgLight1);
 		}		
 		if(lightSpot1 == 1){
-			imgLight1.style.filter += "hue-rotate(290deg)";
+			imgLight1.style.filter += "hue-rotate(30deg)";
 			document.getElementById("TrafficLight1").removeChild(olddata1);
 			document.getElementById('TrafficLight1').appendChild(imgLight1);
 		}
-		
+		//----------------------------------------------------------------
 		if(lightSpot2 == 0){
-			imgLight2.style.filter += "hue-rotate(30deg)";
+			imgLight2.style.filter += "hue-rotate(290deg)";
 			if(FirstTimeGOingThrough2 == 0){FirstTimeGOingThrough2 = 1
 				document.getElementById("TrafficLight2").removeChild(olddata2);
 			}
@@ -103,31 +140,31 @@ const sleep = (time) => {
 		}		
 
 		if(lightSpot2 == 1){
-			imgLight2.style.filter += "hue-rotate(290deg)";
+			imgLight2.style.filter += "hue-rotate(30deg)";
 			if(FirstTimeGOingThrough2 == 0){FirstTimeGOingThrough2 = 1
 				document.getElementById("TrafficLight2").removeChild(olddata2);
 			}			
 			document.getElementById('TrafficLight2').appendChild(imgLight2);
 		}
-		
+		//----------------------------------------------------------------
 		if(lightSpot3 == 0){
-			imgLight3.style.filter += "hue-rotate(30deg)";
+			imgLight3.style.filter += "hue-rotate(290deg)";
 			if(FirstTimeGOingThrough3 == 0){FirstTimeGOingThrough3 = 1
 				document.getElementById("TrafficLight3").removeChild(olddata3);
 			}	
 			document.getElementById('TrafficLight3').appendChild(imgLight3);
 		}		
-
 		if(lightSpot3 == 1){
-			imgLight3.style.filter += "hue-rotate(290deg)";
+			imgLight3.style.filter += "hue-rotate(30deg)";
 			if(FirstTimeGOingThrough3 == 0){FirstTimeGOingThrough3 = 1
 				document.getElementById("TrafficLight3").removeChild(olddata3);
 			}	
 			document.getElementById('TrafficLight3').appendChild(imgLight3);
 			console.log("31");
 		}
+		//----------------------------------------------------------------
 		if(lightSpot4 == 0){
-			imgLight4.style.filter += "hue-rotate(30deg)";
+			imgLight4.style.filter += "hue-rotate(290deg)";
 			if(FirstTimeGOingThrough4 == 0){FirstTimeGOingThrough4 = 1
 				document.getElementById("TrafficLight4").removeChild(olddata4);
 			}	
@@ -135,7 +172,7 @@ const sleep = (time) => {
 		}		
 
 		if(lightSpot4 == 1){
-			imgLight4.style.filter += "hue-rotate(290deg)";
+			imgLight4.style.filter += "hue-rotate(30deg)";
 			if(FirstTimeGOingThrough4 == 0){FirstTimeGOingThrough4 = 1
 				document.getElementById("TrafficLight4").removeChild(olddata4);
 			}	
@@ -255,73 +292,38 @@ const sleep = (time) => {
 			clearInterval(car4id);car4id = setInterval(car4frame, 10);
 			function car4frame() {if (pos == 120) {
 				clearInterval(car4id);
-				console.log("Stopped"); car4Stop = true
+				console.log("Stopped car4"); car4Stop = true; turn
 			} else {pos++; 
 				img.style.left = pos + 'px'; car4Stop = false
 			  }
+			}
+			function turn(){
+
 			}
 		}
 	} 
 	
 	
 
+//road system  car "1-4" turning to road "1-4"
+var car1Turn2 = 0;
+var car1Turn3 = 0;
+var car1Turn4 = 0;
 
+var car2Turn3 = 0;
+var car2Turn4 = 0;
+var car2Turn1 = 0;
 
+var car3Turn4 = 0;
+var car3Turn1 = 0;
+var car3Turn2 = 0;
 
+var car4Turn1 = 0;
+var car4Turn2 = 0;
+var car4Turn4 = 0;
 
-	/*
-	function TrafficLight(){
-		var img1 = document.createElement('img');
-		var img2 = document.createElement('img');
-		var img3 = document.createElement('img');
-		var img4 = document.createElement('img');
-
-		if("value == 11"){
-			img1.src = 'redTR.png';
-		img1.style.width = "auto";
-		img1.style.height = "250px";
-		img1.style.justifyContent = "center";
-		img1.style.left = "-75px";
-		img1.style.top = "100px";
-		img1.style.position = "absolute";
-		}	
-		
-
-		
-		
-		
-		img2.src = 'redTR.png';
-		img2.style.width = "auto";
-		img2.style.height = "250px";
-		img2.style.left = "50px";
-		img2.style.top = "100px";
-		img2.style.position = "absolute";
-		
-		
-
-		img3.src = 'redTR.png';
-		img3.style.width = "auto";
-		img3.style.height = "250px";
-		img3.style.justifyContent = "center";
-		img3.style.left = "175px";
-		img3.style.top = "100px";
-		img3.style.position = "absolute";
-		
-		
-
-		
-		img4.src = 'redTR.png';
-		img4.style.width = "auto";
-		img4.style.height = "250px";
-		img4.style.justifyContent = "center";
-		img4.style.left = "300px";
-		img4.style.top = "100px";
-		img4.style.position = "absolute";
-
-		document.getElementById('ControllerChild').appendChild(img1);
-		document.getElementById('ControllerChild').appendChild(img2);
-		document.getElementById('ControllerChild').appendChild(img3);
-		document.getElementById('ControllerChild').appendChild(img4);
-	
-}
-*/
+//Tee ohjelma, jolla ohjaat kuvan mukaisen 4 tien risteyksen liikennevaloja.
+//Huomio liikenneturvallisuus ja ajovuorot. Valojen ohjaus käynnistetään ja 
+//pysäytetään hiirellä nappia painamalla. Havainnollista jollakin tavalla milloin 
+//kelläkin on ajovuoro ja milloin odotusvuoro. Käytä vähintään kaksia nuolivaloja ja ajastusta. 
+//Huomioiden liikenteen joustavuus ja turvallisuus mahdollista liikennevalojen ohjauksella ajaminen useammasta suunnasta samanaikaisesti.

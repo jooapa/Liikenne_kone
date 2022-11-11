@@ -8,43 +8,73 @@
     <script src="javaScript.js"></script>
     <style>
         body{
+            background-image: url('background2-min.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
             font-family: Arial;
+            z-index: -1;
+            
         }
         .Whole{
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 0px;
+            white-space: nowrap;
+        }
+        .grid-container {
+            display: inline-grid;
+            grid-template-columns: auto auto;
+            gap: 1px;
         }
         .buttons{
-            z-index: 2;
+            z-index: 5;
         }
         #myContainer {
             width: 400px;
+            max-width: 400px;
             height: 400px;
             top: 0;
             position: absolute;
-            background-image: url("road small.jpg");
+            background-image: url("road-min.jpg");
+            background-size: contain;
+            
         }
+        
+        .TrafficButton{
+            color: azure;
+            position: relative;
+            z-index: 5;
+            background: transparent;
+            font-size: 20px;
+            transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        .TrafficButton:hover{
+            background-color: rgba(163, 163, 163, 0.322);
+        }
+        .TrafficButton:hover:after{
+            background-color: rgba(0, 0, 0, 0);
+        }
+       
+        #ButImg{
+            display: flex;
+            right: 0;
+            position: relative;
+        }
+        
         footer{
             background-color: rgba(0, 0, 0, 0.467);
-            width: 900px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            width: 400px;
             height: 200px;
             position: absolute;
             bottom: 0;
-        }
-
-        #TrafficButton11{
-            position: relative;
-            z-index: 1;
-            background: transparent;
-            font-size: 11px;
-        }
-        #TrafficButton12{
-            position: relative;
-            z-index: 1;
-            background: transparent;
-            font-size: 11px;
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
         }
 
         #TrafficLight1, #TrafficLight2, #TrafficLight3 ,#TrafficLight4{
@@ -52,16 +82,18 @@
             height: 400px;
             top: 0;
             position: absolute;
-            z-index: 3;
+            z-index: 4;
         }
-
+        #TrafficButton1{border-radius: 10px 10px 10px 0px;}
+        #TrafficButton2{border-radius: 0px 10px 10px 10px;}
+        #TrafficButton3{border-radius: 10px 0px 10px 10px;}
+        #TrafficButton4{border-radius: 10px 10px 0px 10px;}
     </style>
 </head>
 <body onload="Start()">
 
     <div class="Whole">
         <div class="buttons">    
-            <input onclick="change()" type="button" value="Punainen" id="myButton1"/>
             <input onclick="GFG_Fun()" type="button" value="Clone car" id="myButton2"/>
         </div>
         <div id ="myContainer">
@@ -73,17 +105,15 @@
         <div id="TrafficLight4"></div>
         
         <footer>
-    
-            <button value="11" id="TrafficButton11" onclick="Start11()">Vihreä</button>
-            <button value="12" id="TrafficButton11" onclick="Start12()">Punainen</button>
-            <button value="21" id="TrafficButton11" onclick="Start21()">Vihreä</button>
-            <button value="22" id="TrafficButton11" onclick="Start22()">Punainen</button>
-            <button value="31" id="TrafficButton11" onclick="Start31()">Vihreä</button>
-            <button value="32" id="TrafficButton11" onclick="Start32()">Punainen</button>
-            <button value="41" id="TrafficButton11" onclick="Start41()">Vihreä</button>
-            <button value="42" id="TrafficButton11" onclick="Start42()">Punainen</button>
-            
-        </div>
+            <div class="grid-container">
+
+                <input class="TrafficButton" onclick="change2()" type="button" value="Punainen" id="TrafficButton2"/>
+                <input class="TrafficButton" onclick="change3()" type="button" value="Punainen" id="TrafficButton3"/>
+                <input class="TrafficButton" onclick="change1()" type="button" value="Punainen" id="TrafficButton1"/>
+                <input class="TrafficButton" onclick="change4()" type="button" value="Punainen" id="TrafficButton4"/>
+
+            </div>
+        </footer>
 
 
 
