@@ -88,13 +88,24 @@
         #TrafficButton2{border-radius: 0px 10px 10px 10px;}
         #TrafficButton3{border-radius: 10px 0px 10px 10px;}
         #TrafficButton4{border-radius: 10px 10px 0px 10px;}
+        #refreshb{
+            position: inherit;
+            margin-top: 100px;
+        }
+        #refreshb:hover{
+            background-color: rgba(255, 3, 3, 0.65);
+            border-radius: 10px 10px 10px 10px;
+        }
+        #refreshb:hover:after{
+            background-color: rgba(228, 30, 30, 0);
+        }
     </style>
 </head>
-<body onload="Start()">
+<body onload="onload()">
 
     <div class="Whole">
         <div class="buttons">    
-            <input onclick="CloneCar()" type="button" value="Clone car" id="myButton2"/>
+            
         </div>
         <div id ="myContainer">
             <kuva id="bgId"></kuva> 
@@ -107,12 +118,13 @@
         <footer>
             <div class="grid-container">
 
-                <input class="TrafficButton" onclick="change2()" type="button" value="Punainen 2" id="TrafficButton2"/>
-                <input class="TrafficButton" onclick="change3()" type="button" value="Punainen 3" id="TrafficButton3"/>
-                <input class="TrafficButton" onclick="change1()" type="button" value="Punainen 1" id="TrafficButton1"/>
-                <input class="TrafficButton" onclick="change4()" type="button" value="Punainen 4" id="TrafficButton4"/>
+                <input class="TrafficButton" onclick="change2()" type="button" value="Punainen" id="TrafficButton2"/>
+                <input class="TrafficButton" onclick="change3()" type="button" value="Punainen" id="TrafficButton3"/>
+                <input class="TrafficButton" onclick="change1()" type="button" value="Punainen" id="TrafficButton1"/>
+                <input class="TrafficButton" onclick="change4()" type="button" value="Punainen" id="TrafficButton4"/>
 
             </div>
+            <input class="TrafficButton" onclick="window.location.reload()" type="button" value="Refresh" id="refreshb"/>
         </footer>
 
 
