@@ -33,7 +33,11 @@ Car1InterHalfDone = false
 Car2InterHalfDone = false
 Car3InterHalfDone = false
 
+var autoNopeus = 3
 
+function changeCarSpeed(){
+	autoNopeus = prompt("Syötä Auton Nopeus")
+}
 function change1() {
 	var elem = document.getElementById("TrafficButton1");
 	if (elem.value=="Punainen") {
@@ -166,7 +170,6 @@ function Start() {
 			document.getElementById("TrafficLight3").removeChild(olddata3);
 		}	
 		document.getElementById('TrafficLight3').appendChild(imgLight3);
-		console.log("31");
 	}
 	//----------------------------------------------------------------
 	if(lightSpot4 == 0) {
@@ -174,7 +177,7 @@ function Start() {
 		if(FirstTimeGOingThrough4 == 0){FirstTimeGOingThrough4 = 1
 			document.getElementById("TrafficLight4").removeChild(olddata4);
 		}	
-		document.getElementById('TrafficLight4').appendChild(imgLight4);console.log("32");
+		document.getElementById('TrafficLight4').appendChild(imgLight4);
 	}		
 
 	if(lightSpot4 == 1) {
@@ -327,103 +330,104 @@ function CloneCar() {
 	Car4.imgCar4.style.position = Car4.p
 	
 	//rng = Math.floor(Math.random() * 4);
-	rng = 0;
-	
+	createCar1();	
+	createCar2();
+	createCar3();
+	createCar4();
+} 
 
+function createCar1(){
 
-	console.log(rng)
-	if(rng == 0 && car1Exist == false){
-		Car1Rotation = 0
-		car1Exist = true;
-		Car1.imgCar1.style.transform = "translate(220px, 390px)";
-		Car1.imgCar1.style.transform += "rotate("+Car1Rotation+"deg)";
-		document.getElementById('myContainer').appendChild(Car1.imgCar1);
-		Car1RoadTurn = Math.floor(Math.random() * 4) +1;
-		if(Car1RoadTurn == 1){Car1RoadTurn = 2}
-		clearInterval(car1id);
-		car1id = setInterval(car1frame, 3);
-		function car1frame() {
-			if (Car1.pos == 120) {
-				clearInterval(car1id);
-				console.log("car1 stoppped at light");
-				car1Stop = true;
-				
-				console.log(Car1RoadTurn);
-
-				
-				if(Car1RoadTurn == 2){
-					if (lightSpot1 == 1){
-						turn12();
-						console.log("car1 going to rotate to road 2")
-					}
-				}
-				if(Car1RoadTurn == 3){
-					if (lightSpot1 == 1){
-						turn13();
-						console.log("car1 going to rotate to road 2")
-					}
-				}
-				if(Car1RoadTurn == 4){
-					if (lightSpot1 == 1){
-						turn14();
-						console.log("car1 going to rotate to road 2")
-					}
-				}
-				}
-				else {
-					Car1.pos++; 
-					Car1.imgCar1.style.top = -Car1.pos + 'px'; 
-					car1Stop = false
+	Car1.imgCar1.style.top = '0px';
+	Car1.imgCar1.style.left = '0px';
+	Car1.imgCar1.style.transform += "rotate(0deg)";
+	Car1Rotation = 0
+	car1Exist = true;
+	Car1.imgCar1.style.transform = "translate(220px, 390px)";
+	Car1.imgCar1.style.transform += "rotate("+Car1Rotation+"deg)";
+	document.getElementById('myContainer').appendChild(Car1.imgCar1);
+	Car1RoadTurn = Math.floor(Math.random() * 4) +1;
+	if(Car1RoadTurn == 1){Car1RoadTurn = 2}
+	clearInterval(car1id);
+	car1id = setInterval(car1frame, autoNopeus);
+	function car1frame() {
+		if (Car1.pos == 120) {
+			clearInterval(car1id);
+			console.log("car1 stoppped at light");
+			car1Stop = true;
+			
+			if(Car1RoadTurn == 2){
+				if (lightSpot1 == 1){
+					turn12();
 				}
 			}
-	}
-	rng = 1;
-	if(rng == 1 && car2Exist == false) {
-		Car2Rotation = -90
-		car2Exist = true;
-		Car2.imgCar2.style.transform = "translate(410px, 145px)";
-		Car2.imgCar2.style.transform += "rotate("+Car2Rotation+"deg)";
-		document.getElementById('myContainer').appendChild(Car2.imgCar2);
-		Car2RoadTurn = Math.floor(Math.random() * 4) +1;
-		if(Car2RoadTurn == 2){Car2RoadTurn = 4}
-		clearInterval(car2id);
-		car2id = setInterval(car2frame, 3);
-		function car2frame() {
-			if (Car2.pos == 120) {
-				clearInterval(car2id);
-				console.log("car2 stoppped at light");
-				car2Stop = true;
-				console.log(Car2RoadTurn);
-
-				if(Car2RoadTurn == 1){
-					if (lightSpot2 == 1){
-						turn21();
-						console.log("car2 going to rotate to road 1")
-					}
-				}
-				if(Car2RoadTurn == 3){
-					if (lightSpot2 == 1){
-						turn23();
-						console.log("car2 going to rotate to road 3")
-					}
-				}
-				if(Car2RoadTurn == 4){
-					if (lightSpot2 == 1){
-						turn24();
-						console.log("car2 going to rotate to road 4")
-					}
-				}
-				}
-				else {
-					Car2.pos++; 
-					Car2.imgCar2.style.left = -Car2.pos + 'px'; 
-					car2Stop = false
+			if(Car1RoadTurn == 3){
+				if (lightSpot1 == 1){
+					turn13();
 				}
 			}
+			if(Car1RoadTurn == 4){
+				if (lightSpot1 == 1){
+					turn14();
+				}
+			}
+		}
+			else {
+				Car1.pos++; 
+				Car1.imgCar1.style.top = -Car1.pos + 'px'; 
+				car1Stop = false
+			}
 	}
-	rng = 2;
-	if(rng == 2 && car3Exist == false) {
+}
 
+function createCar2(){
+	Car2.imgCar2.style.top = '0px';
+	Car2.imgCar2.style.left = '0px';
+	Car2.imgCar2.style.transform += "rotate(0deg)";
+	Car2Rotation = -90
+	car2Exist = true;
+	Car2.imgCar2.style.transform = "translate(410px, 145px)";
+	Car2.imgCar2.style.transform += "rotate("+Car2Rotation+"deg)";
+	document.getElementById('myContainer').appendChild(Car2.imgCar2);
+	Car2RoadTurn = Math.floor(Math.random() * 4) +1;
+	if(Car2RoadTurn == 2){Car2RoadTurn = 4}
+	clearInterval(car2id);
+	car2id = setInterval(car2frame, autoNopeus);
+	function car2frame() {
+		if (Car2.pos == 120) {
+			clearInterval(car2id);
+			console.log("car2 stoppped at light");
+			car2Stop = true;
+			console.log(Car2RoadTurn);
+
+			if(Car2RoadTurn == 1){
+				if (lightSpot2 == 1){
+					turn21();
+				}
+			}
+			if(Car2RoadTurn == 3){
+				if (lightSpot2 == 1){
+					turn23();
+				}
+			}
+			if(Car2RoadTurn == 4){
+				if (lightSpot2 == 1){
+					turn24();
+				}
+			}
+			}
+			else {
+				Car2.pos++; 
+				Car2.imgCar2.style.left = -Car2.pos + 'px'; 
+				car2Stop = false
+			}
+		}
+}
+
+function createCar3(){
+		Car3.imgCar3.style.top = '0px';
+		Car3.imgCar3.style.left = '0px';
+		Car3.imgCar3.style.transform += "rotate(0deg)";
 		Car3Rotation = 180
 		car3Exist = true;
 		Car3.imgCar3.style.transform = "translate(160px, -30px)";
@@ -432,31 +436,26 @@ function CloneCar() {
 		Car3RoadTurn = Math.floor(Math.random() * 4) +1;
 		if(Car3RoadTurn == 3){Car3RoadTurn = 1}
 		clearInterval(car3id);
-		car3id = setInterval(car3frame, 3);
+		car3id = setInterval(car3frame, autoNopeus);
 		function car3frame() {
 			if (Car3.pos == 120) {
 				clearInterval(car3id);
 				console.log("car3 stoppped at light");
 				car3Stop = true;
-				console.log(Car3RoadTurn);
-
 				
 				if(Car3RoadTurn == 1){
 					if (lightSpot3 == 1){
 						turn31();
-						console.log("car3 going to rotate to road 1")
 					}
 				}
 				if(Car3RoadTurn == 2){
 					if (lightSpot3 == 1){
 						turn32();
-						console.log("car3 going to rotate to road 3")
 					}
 				}
 				if(Car3RoadTurn == 4){
 					if (lightSpot3 == 1){
 						turn34();
-						console.log("car3 going to rotate to road 4")
 					}
 				}
 				}
@@ -467,8 +466,11 @@ function CloneCar() {
 				}
 			}
 	}
-	rng = 3;
-	if(rng == 3 && car4Exist == false) {
+
+function createCar4(){
+		Car4.imgCar4.style.top = '0px';
+		Car4.imgCar4.style.left = '0px';
+		Car4.imgCar4.style.transform += "rotate(0deg)"; 
 		Car4Rotation = 90
 		car4Exist = true;
 		Car4.imgCar4.style.transform = "translate(-25px, 210px)";
@@ -476,7 +478,6 @@ function CloneCar() {
 		document.getElementById('myContainer').appendChild(Car4.imgCar4);
 		Car4RoadTurn = Math.floor(Math.random() * 4) +1;
 		if(Car4RoadTurn == 4){Car4RoadTurn = 1}
-		Car4RoadTurn = 3
 		clearInterval(car4id);
 		car4id = setInterval(car4frame, 3);
 		function car4frame() {
@@ -484,25 +485,21 @@ function CloneCar() {
 				clearInterval(car4id);
 				console.log("car4 stoppped at light");
 				car4Stop = true;
-				console.log(Car4RoadTurn);
 
 				
 				if(Car4RoadTurn == 1){
 					if (lightSpot4 == 1){
 						turn41();
-						console.log("car4 going to rotate to road 1")
 					}
 				}
 				if(Car4RoadTurn == 2){
 					if (lightSpot4 == 1){
 						turn42();
-						console.log("car4 going to rotate to road 2")
 					}
 				}
 				if(Car4RoadTurn == 3){
 					if (lightSpot4 == 1){
 						turn43();
-						console.log("car4 going to rotate to road 4")
 					}
 				}
 				}
@@ -512,19 +509,18 @@ function CloneCar() {
 					car4Stop = false
 				}
 			}
-	}
-} 
+}
 
 
 function turn12() {
 	if(Car1InterHalfDone == false){
 		if(lightSpot1 == 1 && Car1.pos == 120) {
 			clearInterval(car1id);
-			car1id = setInterval(car1frame, 3);
+			car1id = setInterval(car1frame, autoNopeus);
 			function car1frame() {
 				if (Car1.pos == 180) {
 					clearInterval(car1id);
-					console.log("Car1 is keskel");
+					console.log("Car1,2 is keskel");
 					Car1InterHalfDone = true
 					Car1.pos = 0;
 					turn122();
@@ -536,6 +532,10 @@ function turn12() {
 					Car1.imgCar1.style.top = -Car1.pos + 'px';
 					Car1.imgCar1.style.transform += "rotate("+ 1.5 +"deg)"; 
 					car1Stop = false
+					if(Car1.pos > 150 && Car1.pos < 180){
+						console.log("Car1 is keskel 12");
+						Car1InterHalfDone = true
+					}
 				}
 			}
 		}
@@ -544,15 +544,14 @@ function turn12() {
 
 function turn122(){
 	clearInterval(car1id);
-	car1id = setInterval(car1frame, 3);
+	car1id = setInterval(car1frame, autoNopeus);
 	function car1frame() {
 		if (Car1.pos == 180) {
 			clearInterval(car1id);
-			console.log("Car1 is keskel");
-			Car1InterHalfDone = true
+			console.log("Car12 loppu");
+			Car1InterHalfDone = false
 			Car1.pos = 1;
-			Car1Reset();			
-			
+			createCar1();			
 			//Crash detection
 			
 		} else {
@@ -560,6 +559,10 @@ function turn122(){
 			Car1.imgCar1.style.left = Car1.pos + 'px';
 			Car1.imgCar1.style.transform += "rotate("+ 0 +"deg)"; 
 			car1Stop = false
+			if(Car1.pos > 0 && Car1.pos < 50){
+				console.log("Car12 is keskel 112 else");
+				Car1InterHalfDone = true
+			}
 		}
 	}
 }
@@ -568,15 +571,16 @@ function turn13() {
 	if(Car1InterHalfDone == false){
 		if(lightSpot1 == 1 && Car1.pos == 120) {
 			clearInterval(car1id);
-			car1id = setInterval(car1frame, 3);
+			car1id = setInterval(car1frame, autoNopeus);
 			function car1frame() {
 				if (Car1.pos == 450) {
 					clearInterval(car1id);
 					
 					Car1.pos = 0;
-					
+					Car1InterHalfDone = false
+					createCar1();
 					//Crash detection
-					Car1Reset();
+					
 				} else {
 					Car1.pos++; 
 					Car1.imgCar1.style.top = -Car1.pos + 'px';
@@ -595,7 +599,7 @@ function turn14() {
 	if(Car1InterHalfDone == false){
 		if(lightSpot1 == 1 && Car1.pos == 120) {
 			clearInterval(car1id);
-			car1id = setInterval(car1frame, 3);
+			car1id = setInterval(car1frame, autoNopeus);
 			function car1frame() {
 				if (Car1.pos == 240) {
 					clearInterval(car1id);
@@ -611,6 +615,10 @@ function turn14() {
 					Car1.imgCar1.style.top = -Car1.pos + 'px';
 					Car1.imgCar1.style.transform += "rotate("+ -0.75 +"deg)"; 
 					car1Stop = false
+					if(Car1.pos > 150 && Car1.pos < 180){
+						console.log("Car1 is keskel 14");
+						Car1InterHalfDone = true
+					}
 				}
 			}
 		}
@@ -619,14 +627,14 @@ function turn14() {
 
 function turn144(){
 	clearInterval(car1id);
-	car1id = setInterval(car1frame, 3);
+	car1id = setInterval(car1frame, autoNopeus);
 	function car1frame() {
 		if (Car1.pos == 260) {
 			clearInterval(car1id);
 			console.log("Car1 is keskel");
-			Car1InterHalfDone = true
+			Car1InterHalfDone = false
 			Car1.pos = 1;
-			Car1Reset();			
+			createCar1();			
 			
 			//Crash detection
 
@@ -635,6 +643,10 @@ function turn144(){
 			Car1.imgCar1.style.left = -Car1.pos + 'px';
 			Car1.imgCar1.style.transform += "rotate("+ 0 +"deg)"; 
 			car1Stop = false
+			if(Car1.pos > 0 && Car1.pos < 50){
+				console.log("Car144 is keskel 144 else");
+				Car1InterHalfDone = true
+			}
 		}
 	}
 }
@@ -643,7 +655,7 @@ function turn21() {
 	if(Car2InterHalfDone == false){
 		if(lightSpot2 == 1 && Car2.pos == 120) {
 			clearInterval(car2id);
-			car2id = setInterval(car2frame, 3);
+			car2id = setInterval(car2frame, autoNopeus);
 			function car2frame() {
 				if (Car2.pos == 245) {
 					clearInterval(car2id);
@@ -659,6 +671,10 @@ function turn21() {
 					Car2.imgCar2.style.left = -Car2.pos + 'px';
 					Car2.imgCar2.style.transform += "rotate("+ -0.705 +"deg)"; 
 					car2Stop = false
+					if(Car1.pos > 150 && Car1.pos < 180){
+						console.log("Car1 is keskel 12");
+						Car1InterHalfDone = true
+					}
 				}
 			}
 		}
@@ -667,14 +683,14 @@ function turn21() {
 
 function turn211(){
 	clearInterval(car2id);
-	car2id = setInterval(car2frame, 3);
+	car2id = setInterval(car2frame, autoNopeus);
 	function car2frame() {
 		if (Car2.pos == 260) {
 			clearInterval(car2id);
 			console.log("Car2 is keskel");
-			Car2InterHalfDone = true
 			Car2.pos = 0;
-			Car2Reset();			
+			Car2InterHalfDone = false
+			createCar2();			
 			
 			//Crash detection
 
@@ -683,6 +699,10 @@ function turn211(){
 			Car2.imgCar2.style.top = Car2.pos + 'px';
 			Car2.imgCar2.style.transform += "rotate("+ 0 +"deg)"; 
 			car2Stop = false
+			if(Car1.pos > 0 && Car1.pos < 50){
+				console.log("Car12 is keskel 112 else");
+				Car1InterHalfDone = true
+			}
 		}
 	}
 }
@@ -691,7 +711,7 @@ function turn23() {
 	if(Car2InterHalfDone == false){
 		if(lightSpot2 == 1 && Car2.pos == 120) {
 			clearInterval(car2id);
-			car2id = setInterval(car2frame, 3);
+			car2id = setInterval(car2frame, autoNopeus);
 			function car2frame() {
 				if (Car2.pos == 190) {
 					clearInterval(car2id);
@@ -707,6 +727,7 @@ function turn23() {
 					Car2.imgCar2.style.left = -Car2.pos + 'px';
 					Car2.imgCar2.style.transform += "rotate("+ 1.3 +"deg)"; 
 					car2Stop = false
+
 				}
 			}
 		}
@@ -715,14 +736,14 @@ function turn23() {
 
 function turn233(){
 	clearInterval(car2id);
-	car2id = setInterval(car2frame, 3);
+	car2id = setInterval(car2frame, autoNopeus);
 	function car2frame() {
 		if (Car2.pos == 240) {
 			clearInterval(car2id);
 			console.log("Car2 is lopussa");
-			Car2InterHalfDone = true
 			Car2.pos = 1;
-			Car2Reset();			
+			Car2InterHalfDone = false
+			createCar2();				
 			
 			//Crash detection
 
@@ -739,15 +760,16 @@ function turn24() {
 	if(Car2InterHalfDone == false){
 		if(lightSpot2 == 1 && Car2.pos == 120) {
 			clearInterval(car2id);
-			car2id = setInterval(car2frame, 3);
+			car2id = setInterval(car2frame, autoNopeus);
 			function car2frame() {
 				if (Car2.pos == 450) {
 					clearInterval(car2id);
 					
 					Car2.pos = 0;
+					Car2InterHalfDone = false
+					createCar2();	
 					
 					//Crash detection
-					Car2Reset();
 				} else {
 					Car2.pos++; 
 					Car2.imgCar2.style.left = -Car2.pos + 'px';
@@ -766,15 +788,16 @@ function turn31() {
 	if(Car3InterHalfDone == false){
 		if(lightSpot3 == 1 && Car3.pos == 120) {
 			clearInterval(car3id);
-			car3id = setInterval(car3frame, 3);
+			car3id = setInterval(car3frame, autoNopeus);
 			function car3frame() {
 				if (Car3.pos == 450) {
 					clearInterval(car3id);
 					
 					Car3.pos = 0;
+					Car3InterHalfDone = false
+					createCar3();
 					
 					//Crash detection
-					Car3Reset();
 				} else {
 					Car3.pos++; 
 					Car3.imgCar3.style.top = Car3.pos + 'px';
@@ -793,7 +816,7 @@ function turn32() {
 	if(Car3InterHalfDone == false){
 		if(lightSpot3 == 1 && Car3.pos == 120) {
 			clearInterval(car3id);
-			car3id = setInterval(car3frame, 3);
+			car3id = setInterval(car3frame, autoNopeus);
 			function car3frame() {
 				if (Car3.pos == 235) {
 					clearInterval(car3id);
@@ -817,14 +840,14 @@ function turn32() {
 
 function turn322(){
 	clearInterval(car3id);
-	car3id = setInterval(car3frame, 3);
+	car3id = setInterval(car3frame, autoNopeus);
 	function car3frame() {
 		if (Car3.pos == 260) {
 			clearInterval(car3id);
 			console.log("Car3 is lopussa");
-			Car3InterHalfDone = true
 			Car3.pos = 1;
-			Car3Reset();			
+			Car3InterHalfDone = false
+			createCar3();				
 			
 			//Crash detection
 
@@ -841,11 +864,11 @@ function turn34() {
 	if(Car3InterHalfDone == false){
 		if(lightSpot3 == 1 && Car3.pos == 120) {
 			clearInterval(car3id);
-			car3id = setInterval(car3frame, 3);
+			car3id = setInterval(car3frame, autoNopeus);
 			function car3frame() {
 				if (Car3.pos == 180) {
 					clearInterval(car3id);
-					console.log("Car3 is keskel");
+					console.log("Car34 is keskel");
 					Car3InterHalfDone = true
 					Car3.pos = 0;
 					turn344();
@@ -865,14 +888,14 @@ function turn34() {
 
 function turn344(){
 	clearInterval(car3id);
-	car3id = setInterval(car3frame, 3);
+	car3id = setInterval(car3frame, autoNopeus);
 	function car3frame() {
 		if (Car3.pos == 240) {
 			clearInterval(car3id);
 			console.log("Car3 is lopussa");
-			Car3InterHalfDone = true
 			Car3.pos = 1;
-			Car3Reset();			
+			Car3InterHalfDone = false
+			createCar3();			
 			
 			//Crash detection
 
@@ -889,7 +912,7 @@ function turn41() {
 	if(Car4InterHalfDone == false){
 		if(lightSpot4 == 1 && Car4.pos == 120) {
 			clearInterval(car4id);
-			car4id = setInterval(car4frame, 3);
+			car4id = setInterval(car4frame, autoNopeus);
 			function car4frame() {
 				if (Car4.pos == 180) {
 					clearInterval(car4id);
@@ -913,15 +936,15 @@ function turn41() {
 
 function turn411(){
 	clearInterval(car4id);
-	car4id = setInterval(car4frame, 3);
+	car4id = setInterval(car4frame, autoNopeus);
 	function car4frame() {
 		if (Car4.pos == 240) {
 			clearInterval(car4id);
 			console.log("Car4 is lopussa");
-			Car4InterHalfDone = true
-			Car4.pos = 1;
-			Car4Reset();			
-			
+			Car4InterHalfDone = false;
+			createCar4();
+			Car4.pos = 0;
+						
 			//Crash detection
 
 		} else {
@@ -932,11 +955,40 @@ function turn411(){
 		}
 	}
 }
+function turn42() {
+	if(Car4InterHalfDone == false){
+		if(lightSpot4 == 1 && Car4.pos == 120) {
+			clearInterval(car4id);
+			car4id = setInterval(car4frame, autoNopeus);
+			function car4frame() {
+				if (Car4.pos == 450) {
+					clearInterval(car4id);
+					
+					Car4.pos = 0;
+					
+					//Crash detection
+					createCar4();
+					Car4InterHalfDone = false
+					//--------
+				} else {
+					Car4.pos++; 
+					Car4.imgCar4.style.left = Car4.pos + 'px';
+					car4Stop = false
+					if(Car4.pos > 190 && Car4.pos < 250){
+						console.log("Car4 is keskel");
+						Car4InterHalfDone = true
+					}
+				}
+			}
+		}
+	}
+}
+
 function turn43() {
 	if(Car4InterHalfDone == false){
 		if(lightSpot4 == 1 && Car4.pos == 120) {
 			clearInterval(car4id);
-			car4id = setInterval(car4frame, 3);
+			car4id = setInterval(car4frame, autoNopeus);
 			function car4frame() {
 				if (Car4.pos == 240) {
 					clearInterval(car4id);
@@ -960,15 +1012,14 @@ function turn43() {
 
 function turn433(){
 	clearInterval(car4id);
-	car4id = setInterval(car4frame, 3);
+	car4id = setInterval(car4frame, autoNopeus);
 	function car4frame() {
 		if (Car4.pos == 260) {
 			clearInterval(car4id);
 			console.log("Car4 is lopussa");
-			Car4InterHalfDone = true
 			Car4.pos = 1;
-			Car4Reset();			
-			
+			Car4InterHalfDone = false
+			createCar4();
 			//Crash detection
 
 		} else {
@@ -978,7 +1029,7 @@ function turn433(){
 			car4Stop = false
 		}
 	}
-}
+} 	
 
 
 
