@@ -99,6 +99,10 @@
         #refreshb:hover:after{
             background-color: rgba(228, 30, 30, 0);
         }
+        .speedbutton{
+            position: absolute;
+            margin-top: 150px;
+        }
     </style>
 </head>
 <body onload="onload()">
@@ -126,6 +130,7 @@
 
             </div>
             <input class="TrafficButton" onclick="window.location.reload()" type="button" value="Refresh" id="refreshb"/>
+            <input class="speedbutton" onclick="changeCarSpeed()" type="button" value="Auto Nopeus" id="Sbtton"/>
         </footer>
 
 
