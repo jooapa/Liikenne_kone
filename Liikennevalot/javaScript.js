@@ -41,7 +41,7 @@ Car4Tile = 0
 var autoNopeus = 1
 
 function changeCarSpeed(){
-	autoNopeus = prompt("Syötä Auton Nopeus", "Sitä pienempi numero sitä nopeampi")
+	autoNopeus = prompt("Syötä Auton Nopeus", "Sitä pienempi numero sitä nopeampi 'toimii vaan ainakin operassa'")
 }
 function change1() {
 	var elem = document.getElementById("TrafficButton1");
@@ -94,6 +94,7 @@ function change4() {
 function onload(){
 	CloneCar();
 	Start();
+	RotateArrows();
 }
 function Start() {
 	var imgLight1 = document.createElement('img');
@@ -1159,35 +1160,19 @@ function turn433(){
 	}
 } 	
 
-/*
-function resetCar1Tiles(){
-	var Car1Tile1 = 0
-	var Car1Tile2 = 0
-	var Car1Tile3 = 0
-	var Car1Tile4 = 0
+function RotateArrows(){
+	var Arrow1 = document.createElement('img');
+	Arrow1.src = "arrow.svg";
+	Arrow1.style.transform = "translate(250px, 280px)";
+	Arrow1.style.transform += "rotate(90deg)";
+	Arrow1.style.width = "auto";
+	Arrow1.style.height = "50px";
+	Arrow1.style.position = "absolute";
+	var Arrowdata1=document.getElementById("Arrow1id").lastChild;
+	document.getElementById('Arrow1id').appendChild(Arrow1);
+
 }
 
-function resetCar2Tiles(){
-	var Car2Tile1 = 0
-	var Car2Tile2 = 0
-	var Car2Tile3 = 0
-	var Car2Tile4 = 0
-}
-
-function resetCar3Tiles(){
-	var Car3Tile1 = 0
-	var Car3Tile2 = 0
-	var Car3Tile3 = 0
-	var Car3Tile4 = 0
-}
-
-function resetCar4Tiles(){
-	var Car4Tile1 = 0
-	var Car4Tile2 = 0
-	var Car4Tile3 = 0
-	var Car4Tile4 = 0
-}
-*/
 function CrashDetect(){
 	if (Car1Tile == 2 && Car2Tile == 2){
 		console.error();
