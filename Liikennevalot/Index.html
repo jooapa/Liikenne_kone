@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
     <script src="javaScript.js"></script>
     <style>
         body{
@@ -13,7 +14,7 @@
             background-size: cover;
             background-attachment: fixed;
             font-family: Arial;
-            z-index: -1;
+            z-index: -4;
             
         }
         .Whole{
@@ -41,7 +42,13 @@
             background-size: contain;
             
         }
-        
+        @media only screen and (max-width: 400) {
+            #myContainer {
+            position: absolute;
+            width: 100%;
+            }
+        }
+
         .TrafficButton{
             color: azure;
             position: relative;
@@ -76,7 +83,7 @@
             border-top-right-radius: 20px;
             border-top-left-radius: 20px;
         }
-
+        
         #TrafficLight1, #TrafficLight2, #TrafficLight3 ,#TrafficLight4{
             width: 400px;
             height: 400px;
@@ -107,7 +114,78 @@
             width: 200px;
             height: auto;
         }
-    </style>
+        .RestartDiv{
+            
+            -webkit-transform: rotate(-25deg);
+            transform-origin: 0% 0%;
+            animation: example 3s;
+            position: absolute;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(255, 0, 0, 0.566) 0%, rgba(0,0,0,0.5290849616213673) 70%); 
+            -webkit-text-stroke: 1px rgb(253, 253, 253);
+            color: rgb(0, 0, 0);
+            font-size: 50px;
+            transition: 2s;
+            background-color: rgba(44, 44, 44, 0.493);
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            width: 700px;
+            height: 400px;
+            border-radius: 1rem;
+            z-index: 5;
+        }
+        @keyframes example {
+            0% {transform: scale(.01);
+            transform-origin: 0% 0%; ;
+            }
+        }
+
+        .RestartDivTEXT{
+            position: relative;
+            font-family: 'Press Start 2P', cursive;                 
+            margin-bottom: 150px;
+        }
+        .GameOverButton{
+            position: absolute;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            font-family: 'Press Start 2P', cursive;                 
+            border: none;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            top: 200%;
+            left: 50%;
+            transition: cubic-bezier(0,.67,.03,.98) 2.8s;
+            color: black;
+            font-size: 30px;
+            letter-spacing: normal;
+        }
+        #Gameoverid{
+            -webkit-text-stroke: 1px rgb(0, 0, 0);
+
+            border-radius: 2px;
+            padding: 10px;
+            background-color: rgb(255, 255, 255);
+        }
+        #Gameoverid:hover{
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.566) 60%, rgba(0,0,0,0.5290849616213673) 100%); 
+            border-radius: 20px;
+            padding: 10px;
+            color: rgb(255, 0, 0);
+            background-color: rgb(255, 0, 0);
+        }
+        #Gameoverid:hover:after{
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgb(255, 0, 0);
+        }
+
+        </style>
 </head>
 <body onload="onload()">
 
@@ -126,7 +204,7 @@
         
         <footer>
             <div class="grid-container">
-
+                
                 <input class="TrafficButton" onclick="change2()" type="button" value="Punainen" id="TrafficButton2"/>
                 <input class="TrafficButton" onclick="change3()" type="button" value="Punainen" id="TrafficButton3"/>
                 <input class="TrafficButton" onclick="change1()" type="button" value="Punainen" id="TrafficButton1"/>
@@ -138,6 +216,12 @@
         </footer>
 
 
+            <div class="RestartDiv" id="Js_display_flex" >
+                <div class="RestartDivTEXT">
+                    GAME OVER<br>
+                    <input class="GameOverButton" onclick="window.location.reload()" type="button" value="Refresh" id="Gameoverid"/>
+                </div>
+            <div>
 
     </div>
 

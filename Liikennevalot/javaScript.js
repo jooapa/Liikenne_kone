@@ -1136,6 +1136,7 @@ function turn433(){
 			createCar4();
 			//Crash detection
 
+
 		} else {
 			Car4.pos++; 
 			Car4.imgCar4.style.top = -Car4.pos + 'px';
@@ -1190,40 +1191,51 @@ function resetCar4Tiles(){
 function CrashDetect(){
 	if (Car1Tile == 2 && Car2Tile == 2){
 		console.error();
+		CallGameOver();
 	}
 	if (Car1Tile == 3 && Car2Tile == 3){
 		console.error();
+		CallGameOver();
 	}
 	if (Car1Tile == 1 && Car3Tile == 1){
 		console.error();
+		CallGameOver();
 	}
 	if (Car1Tile == 3 && Car3Tile == 3){
 		console.error();
 	}
 	if (Car1Tile == 1 && Car4Tile == 1){
 		console.error();
+		CallGameOver();
 	}
 	if (Car1Tile == 2 && Car4Tile == 2){
 		console.error();
+		CallGameOver();
 	}
 	
 	if (Car2Tile == 3 && Car3Tile == 3){
 		console.error();
+		CallGameOver();
 	}
 	if (Car2Tile == 4 && Car3Tile == 4){
 		console.error();
+		CallGameOver();
 	}
 	if (Car2Tile == 2 && Car4Tile == 2){
 		console.error(Car2Tile == 2 && Car4Tile == 2);
+		CallGameOver();
 	}
 	if (Car2Tile == 4 && Car4Tile == 4){
 		console.error(Car2Tile == 4 && Car4Tile == 4);
+		CallGameOver();
 	}
 	if (Car4Tile == 4 && Car3Tile == 4){
 		console.error();
+		CallGameOver();
 	}
 	if (Car4Tile == 4 && Car1Tile == 4){
 		console.error(Car4Tile == 4 && Car1Tile == 4);
+		CallGameOver();
 	}
 
 	
@@ -1264,7 +1276,13 @@ Car3 = {
 	h: "50px",
 	p: "absolute",
 }
+function CallGameOver(){
+	if(gameover = true){
+	document.getElementById("Js_display_flex").style.display = "inherit";
+	gameover = false
+	}
 
+}
 //road system  car "1-4" turning to road "1-4"
 
 
