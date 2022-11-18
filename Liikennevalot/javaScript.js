@@ -205,19 +205,16 @@ function Start12() {
 	if(Car1RoadTurn == 2){
 		if (lightSpot1 == 1){
 			turn12();
-			console.log("car1 going to rotate to road 2")
 		}
 	}
 	if(Car1RoadTurn == 3){
 		if (lightSpot1 == 1){
 			turn13();
-			console.log("car1 going to rotate to road 2")
 		}
 	}
 	if(Car1RoadTurn == 4){
 		if (lightSpot1 == 1){
 			turn14();
-			console.log("car1 going to rotate to road 2")
 		}
 	}
 }
@@ -234,19 +231,16 @@ function Start22() {
 	if(Car2RoadTurn == 1){
 		if (lightSpot2 == 1){
 			turn21();
-			console.log("car1 going to rotate to road 2")
 		}
 	}
 	if(Car2RoadTurn == 3){
 		if (lightSpot2 == 1){
 			turn23();
-			console.log("car1 going to rotate to road 2")
 		}
 	}
 	if(Car2RoadTurn == 4){
 		if (lightSpot2 == 1){
 			turn24();
-			console.log("car1 going to rotate to road 2")
 		}
 	}
 }
@@ -262,19 +256,16 @@ function Start32() {
 	if(Car3RoadTurn == 1){
 		if (lightSpot3 == 1){
 			turn31();
-			console.log("car3 going to rotate to road 1")
 		}
 	}
 	if(Car3RoadTurn == 4){
 		if (lightSpot3 == 1){
 			turn34();
-			console.log("car3 going to rotate to road 4")
 		}
 	}
 	if(Car3RoadTurn == 2){
 		if (lightSpot3 == 1){
 			turn32();
-			console.log("car3 going to rotate to road 2")
 		}
 	}
 }
@@ -290,19 +281,16 @@ function Start42() {
 	if(Car4RoadTurn == 1){
 		if (lightSpot4 == 1){
 			turn41();
-			console.log("car4 going to rotate to road 1")
 		}
 	}
 	if(Car4RoadTurn == 3){
 		if (lightSpot4 == 1){
 			turn43();
-			console.log("car4 going to rotate to road 4")
 		}
 	}
 	if(Car4RoadTurn == 2){
 		if (lightSpot4 == 1){
 			turn42();
-			console.log("car4 going to rotate to road 2")
 		}
 	}
 }
@@ -391,6 +379,7 @@ function createCar2(){
 	document.getElementById('myContainer').appendChild(Car2.imgCar2);
 	Car2RoadTurn = Math.floor(Math.random() * 4) +1;
 	if(Car2RoadTurn == 2){Car2RoadTurn = 4}
+	Car2RoadTurn = 3
 	clearInterval(car2id);
 	car2id = setInterval(car2frame, autoNopeus);
 	function car2frame() {
@@ -465,7 +454,7 @@ function createCar3(){
 					car3Stop = false
 				}
 			}
-	}
+}
 
 function createCar4(){
 		Car4.imgCar4.style.top = '0px';
@@ -478,6 +467,7 @@ function createCar4(){
 		document.getElementById('myContainer').appendChild(Car4.imgCar4);
 		Car4RoadTurn = Math.floor(Math.random() * 4) +1;
 		if(Car4RoadTurn == 4){Car4RoadTurn = 1}
+		Car4RoadTurn = 3
 		clearInterval(car4id);
 		car4id = setInterval(car4frame, autoNopeus);
 		function car4frame() {
@@ -511,7 +501,6 @@ function createCar4(){
 			}
 }
 
-
 function turn12() {
 		if(lightSpot1 == 1 && Car1.pos == 120) {
 			clearInterval(car1id);
@@ -519,7 +508,6 @@ function turn12() {
 			function car1frame() {
 				if (Car1.pos == 180) {
 					clearInterval(car1id);
-					console.log("Car1,2 is keskel");
 					Car1.pos = 0;
 					turn122();
 					
@@ -530,8 +518,8 @@ function turn12() {
 					Car1.imgCar1.style.top = -Car1.pos + 'px';
 					Car1.imgCar1.style.transform += "rotate("+ 1.5 +"deg)"; 
 					car1Stop = false
-					if(Car1.pos > 150 && Car1.pos < 180){
-						console.log("Car1 is keskel 12");
+					if(Car1.pos > 140 && Car1.pos < 180){
+						console.log("Car1 tile1");
 					}
 				}
 			}
@@ -544,18 +532,16 @@ function turn122(){
 	function car1frame() {
 		if (Car1.pos == 180) {
 			clearInterval(car1id);
-			console.log("Car12 loppu");
 			Car1.pos = 1;
 			createCar1();			
 			//Crash detection
-			
 		} else {
 			Car1.pos++; 
 			Car1.imgCar1.style.left = Car1.pos + 'px';
 			Car1.imgCar1.style.transform += "rotate("+ 0 +"deg)"; 
 			car1Stop = false
 			if(Car1.pos > 0 && Car1.pos < 50){
-				console.log("Car12 is keskel 112 else");
+				console.log("Car1 tile1");
 			}
 		}
 	}
@@ -577,8 +563,11 @@ function turn13() {
 				Car1.pos++; 
 				Car1.imgCar1.style.top = -Car1.pos + 'px';
 				car1Stop = false
-				if(Car1.pos > 190 && Car1.pos < 250){
-					console.log("Car1 is keskel");
+				if(Car1.pos > 160 && Car1.pos < 220){
+					console.log("Car1 tile1");
+				}
+				if(Car1.pos > 220 && Car1.pos < 275){
+					console.log("Car1 tile2");
 				}
 			}
 		}
@@ -592,7 +581,6 @@ function turn14() {
 		function car1frame() {
 			if (Car1.pos == 240) {
 				clearInterval(car1id);
-				console.log("Car1 is keskel");
 				Car1.pos = 0;
 				turn144();
 				
@@ -603,8 +591,11 @@ function turn14() {
 				Car1.imgCar1.style.top = -Car1.pos + 'px';
 				Car1.imgCar1.style.transform += "rotate("+ -0.75 +"deg)"; 
 				car1Stop = false
-				if(Car1.pos > 150 && Car1.pos < 180){
-					console.log("Car1 is keskel 14");
+				if(Car1.pos > 140 && Car1.pos < 200){
+					console.log("Car1 tile1");
+				}
+				if(Car1.pos > 200 && Car1.pos < 360){
+					console.log("Car1 tile2");
 				}
 			
 			}
@@ -618,7 +609,6 @@ function turn144(){
 	function car1frame() {
 		if (Car1.pos == 260) {
 			clearInterval(car1id);
-			console.log("Car1 is keskel");
 			Car1.pos = 1;
 			createCar1();			
 			
@@ -629,12 +619,16 @@ function turn144(){
 			Car1.imgCar1.style.left = -Car1.pos + 'px';
 			Car1.imgCar1.style.transform += "rotate("+ 0 +"deg)"; 
 			car1Stop = false
-			if(Car1.pos > 0 && Car1.pos < 50){
-				console.log("Car144 is keskel 144 else");
+			if(Car1.pos > 0 && Car1.pos < 32){
+				console.log("Car1 tile2");
+			}
+			if(Car1.pos > 32 && Car1.pos < 100){
+				console.log("Car1 tile3");
 			}
 		}
 	}
 }
+
 
 function turn21() {
 		if(lightSpot2 == 1 && Car2.pos == 120) {
@@ -643,7 +637,6 @@ function turn21() {
 			function car2frame() {
 				if (Car2.pos == 245) {
 					clearInterval(car2id);
-					console.log("Car2 is keskel");
 					Car2.pos = 0;
 					turn211();
 					
@@ -654,20 +647,23 @@ function turn21() {
 					Car2.imgCar2.style.left = -Car2.pos + 'px';
 					Car2.imgCar2.style.transform += "rotate("+ -0.705 +"deg)"; 
 					car2Stop = false
-					if(Car1.pos > 150 && Car1.pos < 180){
-						console.log("Car1 is keskel 12");
+					if(Car2.pos > 140 && Car2.pos < 200){
+						console.log("Car2 tile2");
+					}
+					if(Car2.pos > 210 && Car2.pos < 360){
+						console.log("Car2 tile3");
 					}
 				}
 			}
 		}
-	}
+}
+
 function turn211(){
 	clearInterval(car2id);
 	car2id = setInterval(car2frame, autoNopeus);
 	function car2frame() {
 		if (Car2.pos == 260) {
 			clearInterval(car2id);
-			console.log("Car2 is keskel");
 			Car2.pos = 0;
 			createCar2();			
 			
@@ -678,8 +674,11 @@ function turn211(){
 			Car2.imgCar2.style.top = Car2.pos + 'px';
 			Car2.imgCar2.style.transform += "rotate("+ 0 +"deg)"; 
 			car2Stop = false
-			if(Car1.pos > 0 && Car1.pos < 50){
-				console.log("Car12 is keskel 112 else");
+			if(Car2.pos > 0 && Car2.pos < 32){
+				console.log("Car1 tile3");
+			}
+			if(Car2.pos > 140 && Car2.pos < 180){
+				console.log("Car2 tile2");
 			}
 		}
 	}
@@ -692,7 +691,6 @@ function turn23() {
 			function car2frame() {
 				if (Car2.pos == 190) {
 					clearInterval(car2id);
-					console.log("Car2 is keskel");
 					Car2.pos = 0;
 					turn233();
 					
@@ -703,11 +701,13 @@ function turn23() {
 					Car2.imgCar2.style.left = -Car2.pos + 'px';
 					Car2.imgCar2.style.transform += "rotate("+ 1.3 +"deg)"; 
 					car2Stop = false
-
+					if(Car2.pos > 140 && Car2.pos < 180){
+						console.log("Car2 tile2");
+					}
 				}
 			}
 		}
-	}
+}
 
 function turn233(){
 	clearInterval(car2id);
@@ -726,6 +726,9 @@ function turn233(){
 			Car2.imgCar2.style.top = -Car2.pos + 'px';
 			Car2.imgCar2.style.transform += "rotate("+ 0 +"deg)"; 
 			car2Stop = false
+			if(Car2.pos > 0 && Car2.pos < 50){
+				console.log("Car2 tile2");
+			}
 		}
 	}
 }
@@ -746,13 +749,17 @@ function turn24() {
 				Car2.pos++; 
 				Car2.imgCar2.style.left = -Car2.pos + 'px';
 				car2Stop = false
-				if(Car2.pos > 190 && Car2.pos < 250){
-					console.log("Car2 is keskel");
+				if(Car2.pos > 160 && Car2.pos < 220){
+					console.log("Car2 tile2");
+				}
+				if(Car2.pos > 220 && Car2.pos < 275){
+					console.log("Car2 tile3");
 				}
 			}
 		}
 	}
 }
+
 
 function turn31() {
 		if(lightSpot3 == 1 && Car3.pos == 120) {
@@ -770,14 +777,16 @@ function turn31() {
 					Car3.pos++; 
 					Car3.imgCar3.style.top = Car3.pos + 'px';
 					car3Stop = false
-					if(Car3.pos > 190 && Car3.pos < 250){
-						console.log("Car3 is keskel");
+					if(Car3.pos > 140 && Car3.pos < 210){
+						console.log("Car3 tile3");
+					}
+					if(Car3.pos > 210 && Car3.pos < 275){
+						console.log("Car3 tile4");
 					}
 				}
 			}
 		}
-	}
-
+}
 
 function turn32() {
 		if(lightSpot3 == 1 && Car3.pos == 120) {
@@ -786,7 +795,6 @@ function turn32() {
 			function car3frame() {
 				if (Car3.pos == 235) {
 					clearInterval(car3id);
-					console.log("Car3 is keskel");
 					Car3.pos = 0;
 					turn322();
 					
@@ -797,11 +805,16 @@ function turn32() {
 					Car3.imgCar3.style.top = Car3.pos + 'px';
 					Car3.imgCar3.style.transform += "rotate("+ -0.782 +"deg)"; 
 					car3Stop = false
+					if(Car3.pos > 140 && Car3.pos < 200){
+						console.log("Car3 tile3");
+					}
+					if(Car3.pos > 200 && Car3.pos < 360){
+						console.log("Car4 tile4");
+					}
 				}
 			}
 		}
-	}
-
+}
 
 function turn322(){
 	clearInterval(car3id);
@@ -820,6 +833,12 @@ function turn322(){
 			Car3.imgCar3.style.left = Car3.pos + 'px';
 			Car3.imgCar3.style.transform += "rotate("+ 0 +"deg)"; 
 			car3Stop = false
+			if(Car3.pos > 0 && Car3.pos < 32){
+				console.log("Car3 tile4");
+			}
+			if(Car3.pos > 32 && Car3.pos < 100){
+				console.log("Car3 tile1");
+			}
 		}
 	}
 }
@@ -831,7 +850,6 @@ function turn34() {
 		function car3frame() {
 			if (Car3.pos == 180) {
 				clearInterval(car3id);
-				console.log("Car34 is keskel");
 				Car3.pos = 0;
 				turn344();
 				
@@ -842,6 +860,9 @@ function turn34() {
 				Car3.imgCar3.style.top = Car3.pos + 'px';
 				Car3.imgCar3.style.transform += "rotate("+ 1.5 +"deg)"; 
 				car3Stop = false
+				if(Car3.pos > 140 && Car3.pos < 180){
+					console.log("Car3 tile3");
+				}
 			}
 		}
 	}
@@ -864,9 +885,13 @@ function turn344(){
 			Car3.imgCar3.style.left = -Car3.pos + 'px';
 			Car3.imgCar3.style.transform += "rotate("+ 0 +"deg)"; 
 			car3Stop = false
+			if(Car3.pos > 0 && Car3.pos < 50){
+				console.log("Car3 tile3");
+			}
 		}
 	}
 }
+
 
 function turn41() {
 	if(lightSpot4 == 1 && Car4.pos == 120) {
@@ -875,7 +900,6 @@ function turn41() {
 		function car4frame() {
 			if (Car4.pos == 180) {
 				clearInterval(car4id);
-				console.log("Car4 is keskel");
 				Car4InterHalfDone = true
 				Car4.pos = 0;
 				turn411();
@@ -887,6 +911,9 @@ function turn41() {
 				Car4.imgCar4.style.left = Car4.pos + 'px';
 				Car4.imgCar4.style.transform += "rotate("+ 1.5 +"deg)"; 
 				car4Stop = false
+				if(Car4.pos > 140 && Car4.pos < 180){
+					console.log("Car4 tile4");
+				}
 			}
 		}
 	}
@@ -909,9 +936,13 @@ function turn411(){
 			Car4.imgCar4.style.top = Car4.pos + 'px';
 			Car4.imgCar4.style.transform += "rotate("+ 0 +"deg)"; 
 			car4Stop = false
+			if(Car4.pos > 0 && Car4.pos < 50){
+				console.log("Car4 tile4");
+			}
 		}
 	}
 }
+
 function turn42() {
 	if(lightSpot4 == 1 && Car4.pos == 120) {
 		clearInterval(car4id);
@@ -929,8 +960,11 @@ function turn42() {
 				Car4.pos++; 
 				Car4.imgCar4.style.left = Car4.pos + 'px';
 				car4Stop = false
-				if(Car4.pos > 190 && Car4.pos < 250){
-					console.log("Car4 is keskel");
+				if(Car4.pos > 150 && Car4.pos < 210){
+					console.log("Car4 tile4");
+				}
+				if(Car4.pos > 210 && Car4.pos < 275){
+					console.log("Car4 tile1");
 				}
 			}
 		}
@@ -945,7 +979,6 @@ function turn43() {
 			function car4frame() {
 				if (Car4.pos == 240) {
 					clearInterval(car4id);
-					console.log("Car4 is keskel");
 					Car4.pos = 0;
 					turn433();
 					
@@ -956,11 +989,16 @@ function turn43() {
 					Car4.imgCar4.style.left = Car4.pos + 'px';
 					Car4.imgCar4.style.transform += "rotate("+ -0.75 +"deg)"; 
 					car4Stop = false
+					if(Car4.pos > 140 && Car4.pos < 200){
+						console.log("Car4 tile4");
+					}
+					if(Car4.pos > 200 && Car4.pos < 360){
+						console.log("Car4 tile1");
+					}
 				}
 			}
 		}
-	}
-
+}
 
 function turn433(){
 	clearInterval(car4id);
@@ -978,6 +1016,12 @@ function turn433(){
 			Car4.imgCar4.style.top = -Car4.pos + 'px';
 			Car4.imgCar4.style.transform += "rotate("+ 0 +"deg)"; 
 			car4Stop = false
+			if(Car4.pos > 0 && Car4.pos < 32){
+				console.log("Car4 tile1");
+			}
+			if(Car4.pos > 32 && Car4.pos < 100){
+				console.log("Car4 tile2");
+			}
 		}
 	}
 } 	
