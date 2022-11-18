@@ -33,6 +33,11 @@ Car1InterHalfDone = false
 Car2InterHalfDone = false
 Car3InterHalfDone = false
 
+Car1Tile = 0
+Car2Tile = 0
+Car3Tile = 0
+Car4Tile = 0
+
 var autoNopeus = 1
 
 function changeCarSpeed(){
@@ -510,7 +515,7 @@ function turn12() {
 					clearInterval(car1id);
 					Car1.pos = 0;
 					turn122();
-					
+					Car1Tile = 0;
 					//Crash detection
 					
 				} else {
@@ -520,6 +525,11 @@ function turn12() {
 					car1Stop = false
 					if(Car1.pos > 140 && Car1.pos < 180){
 						console.log("Car1 tile1");
+						Car1Tile = 1;
+						CrashDetect();
+					}
+					else{
+						Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 					}
 				}
 			}
@@ -535,6 +545,7 @@ function turn122(){
 			Car1.pos = 1;
 			createCar1();			
 			//Crash detection
+			Car1Tile = 0;
 		} else {
 			Car1.pos++; 
 			Car1.imgCar1.style.left = Car1.pos + 'px';
@@ -542,6 +553,11 @@ function turn122(){
 			car1Stop = false
 			if(Car1.pos > 0 && Car1.pos < 50){
 				console.log("Car1 tile1");
+				Car1Tile = 1;
+				CrashDetect();
+			}
+			else{
+				Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 			}
 		}
 	}
@@ -557,6 +573,7 @@ function turn13() {
 				
 				Car1.pos = 0;
 				createCar1();
+				Car1Tile = 0;
 				//Crash detection
 				
 			} else {
@@ -565,9 +582,16 @@ function turn13() {
 				car1Stop = false
 				if(Car1.pos > 160 && Car1.pos < 220){
 					console.log("Car1 tile1");
+					Car1Tile = 1;
+					CrashDetect();
 				}
 				if(Car1.pos > 220 && Car1.pos < 275){
 					console.log("Car1 tile2");
+					Car1Tile = 2;
+					CrashDetect();
+				}
+				else{
+					Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 				}
 			}
 		}
@@ -583,7 +607,7 @@ function turn14() {
 				clearInterval(car1id);
 				Car1.pos = 0;
 				turn144();
-				
+				Car1Tile = 0;
 				//Crash detection
 				
 			} else {
@@ -593,9 +617,16 @@ function turn14() {
 				car1Stop = false
 				if(Car1.pos > 140 && Car1.pos < 200){
 					console.log("Car1 tile1");
+					Car2Tile = 1;
+					CrashDetect();
 				}
 				if(Car1.pos > 200 && Car1.pos < 360){
 					console.log("Car1 tile2");
+					Car2Tile = 2;
+					CrashDetect();
+				}
+				else{
+					Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 				}
 			
 			}
@@ -611,7 +642,7 @@ function turn144(){
 			clearInterval(car1id);
 			Car1.pos = 1;
 			createCar1();			
-			
+			Car2Tile = 0;
 			//Crash detection
 
 		} else {
@@ -621,9 +652,16 @@ function turn144(){
 			car1Stop = false
 			if(Car1.pos > 0 && Car1.pos < 32){
 				console.log("Car1 tile2");
+				Car1Tile = 2;
+				CrashDetect();
 			}
 			if(Car1.pos > 32 && Car1.pos < 100){
 				console.log("Car1 tile3");
+				Car1Tile = 3;
+				CrashDetect();
+			}
+			else{
+				Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 			}
 		}
 	}
@@ -639,7 +677,7 @@ function turn21() {
 					clearInterval(car2id);
 					Car2.pos = 0;
 					turn211();
-					
+					Car2Tile = 0;
 					//Crash detection
 
 				} else {
@@ -649,9 +687,16 @@ function turn21() {
 					car2Stop = false
 					if(Car2.pos > 140 && Car2.pos < 200){
 						console.log("Car2 tile2");
+						Car2Tile = 2;
+						CrashDetect();
 					}
 					if(Car2.pos > 210 && Car2.pos < 360){
 						console.log("Car2 tile3");
+						Car2Tile = 3;
+						CrashDetect();
+					}
+					else{
+						Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 					}
 				}
 			}
@@ -666,7 +711,7 @@ function turn211(){
 			clearInterval(car2id);
 			Car2.pos = 0;
 			createCar2();			
-			
+			Car2Tile = 0;
 			//Crash detection
 
 		} else {
@@ -676,9 +721,16 @@ function turn211(){
 			car2Stop = false
 			if(Car2.pos > 0 && Car2.pos < 32){
 				console.log("Car1 tile3");
+				Car2Tile = 3;
+				CrashDetect();
 			}
 			if(Car2.pos > 140 && Car2.pos < 180){
 				console.log("Car2 tile2");
+				Car2Tile = 2;
+				CrashDetect();
+			}
+			else{
+				Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 			}
 		}
 	}
@@ -693,7 +745,7 @@ function turn23() {
 					clearInterval(car2id);
 					Car2.pos = 0;
 					turn233();
-					
+					Car2Tile = 0;
 					//Crash detection
 
 				} else {
@@ -703,6 +755,11 @@ function turn23() {
 					car2Stop = false
 					if(Car2.pos > 140 && Car2.pos < 180){
 						console.log("Car2 tile2");
+						Car2Tile = 2;
+						CrashDetect();
+					}
+					else{
+						Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 					}
 				}
 			}
@@ -718,7 +775,7 @@ function turn233(){
 			console.log("Car2 is lopussa");
 			Car2.pos = 1;
 			createCar2();				
-			
+			Car2Tile = 0;
 			//Crash detection
 
 		} else {
@@ -728,6 +785,11 @@ function turn233(){
 			car2Stop = false
 			if(Car2.pos > 0 && Car2.pos < 50){
 				console.log("Car2 tile2");
+				Car2Tile = 2;
+				CrashDetect();
+			}
+			else{
+				Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 			}
 		}
 	}
@@ -743,7 +805,7 @@ function turn24() {
 				
 				Car2.pos = 0;
 				createCar2();	
-				
+				Car2Tile = 0;
 				//Crash detection
 			} else {
 				Car2.pos++; 
@@ -751,9 +813,16 @@ function turn24() {
 				car2Stop = false
 				if(Car2.pos > 160 && Car2.pos < 220){
 					console.log("Car2 tile2");
+					Car2Tile = 2;
+					CrashDetect();
 				}
 				if(Car2.pos > 220 && Car2.pos < 275){
 					console.log("Car2 tile3");
+					Car2Tile = 3;
+					CrashDetect();
+				}
+				else{
+					Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 				}
 			}
 		}
@@ -771,7 +840,7 @@ function turn31() {
 					
 					Car3.pos = 0;
 					createCar3();
-					
+					Car3Tile = 0;
 					//Crash detection
 				} else {
 					Car3.pos++; 
@@ -779,9 +848,16 @@ function turn31() {
 					car3Stop = false
 					if(Car3.pos > 140 && Car3.pos < 210){
 						console.log("Car3 tile3");
+						Car3Tile = 3;
+						CrashDetect();
 					}
 					if(Car3.pos > 210 && Car3.pos < 275){
 						console.log("Car3 tile4");
+						Car3Tile = 4;
+						CrashDetect();
+					}
+					else{
+						Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 					}
 				}
 			}
@@ -797,7 +873,7 @@ function turn32() {
 					clearInterval(car3id);
 					Car3.pos = 0;
 					turn322();
-					
+					Car3Tile = 0;
 					//Crash detection
 
 				} else {
@@ -807,9 +883,16 @@ function turn32() {
 					car3Stop = false
 					if(Car3.pos > 140 && Car3.pos < 200){
 						console.log("Car3 tile3");
+						Car3Tile = 3;
+						CrashDetect();
 					}
 					if(Car3.pos > 200 && Car3.pos < 360){
-						console.log("Car4 tile4");
+						console.log("Car3 tile4");
+						Car3Tile = 4;
+						CrashDetect();
+					}
+					else{
+						Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 					}
 				}
 			}
@@ -825,7 +908,7 @@ function turn322(){
 			console.log("Car3 is lopussa");
 			Car3.pos = 1;
 			createCar3();				
-			
+			Car3Tile = 0;
 			//Crash detection
 
 		} else {
@@ -835,9 +918,16 @@ function turn322(){
 			car3Stop = false
 			if(Car3.pos > 0 && Car3.pos < 32){
 				console.log("Car3 tile4");
+				Car3Tile = 4;
+				CrashDetect();
 			}
 			if(Car3.pos > 32 && Car3.pos < 100){
 				console.log("Car3 tile1");
+				Car3Tile = 1;
+				CrashDetect();
+			}
+			else{
+				Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 			}
 		}
 	}
@@ -852,7 +942,7 @@ function turn34() {
 				clearInterval(car3id);
 				Car3.pos = 0;
 				turn344();
-				
+				Car3Tile = 0;
 				//Crash detection
 
 			} else {
@@ -862,6 +952,11 @@ function turn34() {
 				car3Stop = false
 				if(Car3.pos > 140 && Car3.pos < 180){
 					console.log("Car3 tile3");
+					Car3Tile = 3;
+					CrashDetect();
+				}
+				else{
+					Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 				}
 			}
 		}
@@ -877,7 +972,7 @@ function turn344(){
 			console.log("Car3 is lopussa");
 			Car3.pos = 1;
 			createCar3();			
-			
+			Car3Tile = 0;
 			//Crash detection
 
 		} else {
@@ -887,6 +982,11 @@ function turn344(){
 			car3Stop = false
 			if(Car3.pos > 0 && Car3.pos < 50){
 				console.log("Car3 tile3");
+				Car3Tile = 3;
+				CrashDetect();
+			}
+			else{
+				Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 			}
 		}
 	}
@@ -903,7 +1003,7 @@ function turn41() {
 				Car4InterHalfDone = true
 				Car4.pos = 0;
 				turn411();
-				
+				Car4Tile = 0
 				//Crash detection
 
 			} else {
@@ -913,6 +1013,11 @@ function turn41() {
 				car4Stop = false
 				if(Car4.pos > 140 && Car4.pos < 180){
 					console.log("Car4 tile4");
+					Car4Tile = 4;
+					CrashDetect();
+				}
+				else{
+					Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 				}
 			}
 		}
@@ -928,7 +1033,7 @@ function turn411(){
 			console.log("Car4 is lopussa");
 			createCar4();
 			Car4.pos = 0;
-						
+			Car4Tile = 0
 			//Crash detection
 
 		} else {
@@ -938,6 +1043,11 @@ function turn411(){
 			car4Stop = false
 			if(Car4.pos > 0 && Car4.pos < 50){
 				console.log("Car4 tile4");
+				Car4Tile = 4;
+				CrashDetect();
+			}
+			else{
+				Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 			}
 		}
 	}
@@ -952,7 +1062,7 @@ function turn42() {
 				clearInterval(car4id);
 				
 				Car4.pos = 0;
-				
+				Car4Tile = 0
 				//Crash detection
 				createCar4();
 				//--------
@@ -962,9 +1072,16 @@ function turn42() {
 				car4Stop = false
 				if(Car4.pos > 150 && Car4.pos < 210){
 					console.log("Car4 tile4");
+					Car4Tile = 4;
+					CrashDetect();
 				}
 				if(Car4.pos > 210 && Car4.pos < 275){
 					console.log("Car4 tile1");
+					Car4Tile = 1;
+					CrashDetect();
+				}
+				else{
+					Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 				}
 			}
 		}
@@ -981,7 +1098,7 @@ function turn43() {
 					clearInterval(car4id);
 					Car4.pos = 0;
 					turn433();
-					
+					Car4Tile = 0
 					//Crash detection
 
 				} else {
@@ -991,9 +1108,16 @@ function turn43() {
 					car4Stop = false
 					if(Car4.pos > 140 && Car4.pos < 200){
 						console.log("Car4 tile4");
+						Car4Tile = 4;
+						CrashDetect();
 					}
 					if(Car4.pos > 200 && Car4.pos < 360){
 						console.log("Car4 tile1");
+						Car4Tile = 1;
+						CrashDetect();
+					}
+					else{
+						Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 					}
 				}
 			}
@@ -1008,6 +1132,7 @@ function turn433(){
 			clearInterval(car4id);
 			console.log("Car4 is lopussa");
 			Car4.pos = 1;
+			Car4Tile = 0
 			createCar4();
 			//Crash detection
 
@@ -1018,16 +1143,92 @@ function turn433(){
 			car4Stop = false
 			if(Car4.pos > 0 && Car4.pos < 32){
 				console.log("Car4 tile1");
+				Car4Tile = 1;
+				CrashDetect();
 			}
 			if(Car4.pos > 32 && Car4.pos < 100){
 				console.log("Car4 tile2");
+				Car4Tile = 2;
+				CrashDetect();
+			}
+			else{
+				Car1Tile = 0;Car2Tile = 0;Car3Tile = 0;Car4Tile = 0;
 			}
 		}
 	}
 } 	
 
+/*
+function resetCar1Tiles(){
+	var Car1Tile1 = 0
+	var Car1Tile2 = 0
+	var Car1Tile3 = 0
+	var Car1Tile4 = 0
+}
 
+function resetCar2Tiles(){
+	var Car2Tile1 = 0
+	var Car2Tile2 = 0
+	var Car2Tile3 = 0
+	var Car2Tile4 = 0
+}
 
+function resetCar3Tiles(){
+	var Car3Tile1 = 0
+	var Car3Tile2 = 0
+	var Car3Tile3 = 0
+	var Car3Tile4 = 0
+}
+
+function resetCar4Tiles(){
+	var Car4Tile1 = 0
+	var Car4Tile2 = 0
+	var Car4Tile3 = 0
+	var Car4Tile4 = 0
+}
+*/
+function CrashDetect(){
+	if (Car1Tile == 2 && Car2Tile == 2){
+		console.error();
+	}
+	if (Car1Tile == 3 && Car2Tile == 3){
+		console.error();
+	}
+	if (Car1Tile == 1 && Car3Tile == 1){
+		console.error();
+	}
+	if (Car1Tile == 3 && Car3Tile == 3){
+		console.error();
+	}
+	if (Car1Tile == 1 && Car4Tile == 1){
+		console.error();
+	}
+	if (Car1Tile == 2 && Car4Tile == 2){
+		console.error();
+	}
+	
+	if (Car2Tile == 3 && Car3Tile == 3){
+		console.error();
+	}
+	if (Car2Tile == 4 && Car3Tile == 4){
+		console.error();
+	}
+	if (Car2Tile == 2 && Car4Tile == 2){
+		console.error(Car2Tile == 2 && Car4Tile == 2);
+	}
+	if (Car2Tile == 4 && Car4Tile == 4){
+		console.error(Car2Tile == 4 && Car4Tile == 4);
+	}
+	if (Car4Tile == 4 && Car3Tile == 4){
+		console.error();
+	}
+	if (Car4Tile == 4 && Car1Tile == 4){
+		console.error(Car4Tile == 4 && Car1Tile == 4);
+	}
+
+	
+
+}
 
 
 Car4 = {
@@ -1065,21 +1266,7 @@ Car3 = {
 }
 
 //road system  car "1-4" turning to road "1-4"
-var car1Turn2 = 0;
-var car1Turn3 = 0;
-var car1Turn4 = 0;
 
-var car2Turn3 = 0;
-var car2Turn4 = 0;
-var car2Turn1 = 0;
-
-var car3Turn4 = 0;
-var car3Turn1 = 0;
-var car3Turn2 = 0;
-
-var car4Turn1 = 0;
-var car4Turn2 = 0;
-var car4Turn4 = 0;
 
 
 
