@@ -29,11 +29,10 @@ var FirstTimeGOingThrough2 = 1;
 var FirstTimeGOingThrough3 = 1;
 var FirstTimeGOingThrough4 = 1;
 
-var FirstTimeGOingThroughStartArrows = 1;
-var FirstTimeGOingThroughStartArrows1 = 1;
-var FirstTimeGOingThroughStartArrows2 = 1;
-var FirstTimeGOingThroughStartArrows3 = 1;
-var FirstTimeGOingThroughStartArrows4 = 1;
+let FirstTimeGOingThroughStartArrows1 = 1;
+let FirstTimeGOingThroughStartArrows2 = 1;
+let FirstTimeGOingThroughStartArrows3 = 1;
+let FirstTimeGOingThroughStartArrows4 = 1;
 
 var ArrowThrough1 = 1;
 var ArrowThrough2 = 1;
@@ -50,7 +49,7 @@ Car2Tile = 0
 Car3Tile = 0
 Car4Tile = 0
 
-var autoNopeus = 14
+var autoNopeus = 5
 
 function changeCarSpeed(){
 	LoadArrows();
@@ -107,8 +106,7 @@ function change4() {
 function onload(){
 	CloneCar();
 	Start();
-	FirstTimeGOingThroughStartArrows = 1
-	LoadArrows();
+	//LoadArrows();
 }
 function Start() {
 	var imgLight1 = document.createElement('img');
@@ -363,7 +361,8 @@ function createCar1(){
 	function car1frame() {
 		if (Car1.pos == 120) {
 			clearInterval(car1id);
-			console.log("car1 stoppped at light");
+			
+			LoadArrow1();
 			car1Stop = true;
 			
 			if(Car1RoadTurn == 2){
@@ -408,6 +407,7 @@ function createCar2(){
 	function car2frame() {
 		if (Car2.pos == 120) {
 			clearInterval(car2id);
+			LoadArrow2();
 			console.log("car2 stoppped at light");
 			car2Stop = true;
 			console.log(Car2RoadTurn);
@@ -454,6 +454,7 @@ function createCar3(){
 		function car3frame() {
 			if (Car3.pos == 120) {
 				clearInterval(car3id);
+				LoadArrow3();
 				console.log("car3 stoppped at light");
 				car3Stop = true;
 				
@@ -495,10 +496,12 @@ function createCar4(){
 		else if(Car4RoadTurn == 2){Car4RoadTurn = 2}
 		else if(Car4RoadTurn == 3){Car4RoadTurn = 3}
 		clearInterval(car4id);
+		
 		car4id = setInterval(car4frame, autoNopeus);
 		function car4frame() {
 			if (Car4.pos == 120) {
 				clearInterval(car4id);
+				LoadArrow4();
 				console.log("car4 stoppped at light");
 				car4Stop = true;
 
@@ -548,6 +551,10 @@ function turn12() {
 						console.log("Car1 tile1");
 						Car1Tile = 1;
 						CrashDetect();
+						
+						if(stopCars == 1){
+							clearInterval(car1id);
+						}
 					}
 					else{
 						Car1Tile = 0;
@@ -576,6 +583,10 @@ function turn122(){
 				console.log("Car1 tile1");
 				Car1Tile = 1;
 				CrashDetect();
+					
+				if(stopCars == 1){
+					clearInterval(car1id);
+				}
 			}
 			else{
 				Car1Tile = 0;
@@ -604,12 +615,18 @@ function turn13() {
 				if(Car1.pos > 160 && Car1.pos < 220){
 					console.log("Car1 tile1");
 					Car1Tile = 1;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car1id);
+					}
 				}
 				if(Car1.pos > 220 && Car1.pos < 275){
 					console.log("Car1 tile2");
 					Car1Tile = 2;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car1id);
+					}
 				}
 				else{
 					Car1Tile = 0;
@@ -629,8 +646,6 @@ function turn14() {
 				Car1.pos = 0;
 				turn144();
 				Car1Tile = 0;
-				//Crash detection
-				
 			} else {
 				Car1.pos++; 
 				Car1.imgCar1.style.top = -Car1.pos + 'px';
@@ -639,12 +654,18 @@ function turn14() {
 				if(Car1.pos > 140 && Car1.pos < 200){
 					console.log("Car1 tile1");
 					Car1Tile = 1;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car1id);
+					}
 				}
 				if(Car1.pos > 200 && Car1.pos < 360){
 					console.log("Car1 tile2");
 					Car1Tile = 2;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car1id);
+					}
 				}
 				else{
 					Car1Tile = 0;
@@ -674,12 +695,18 @@ function turn144(){
 			if(Car1.pos > 0 && Car1.pos < 32){
 				console.log("Car1 tile2");
 				Car1Tile = 2;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car1id);
+				}
 			}
 			if(Car1.pos > 32 && Car1.pos < 100){
 				console.log("Car1 tile3");
 				Car1Tile = 3;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car1id);
+				}
 			}
 			else{
 				Car1Tile = 0;
@@ -710,11 +737,18 @@ function turn21() {
 						console.log("Car2 tile2");
 						Car2Tile = 2;
 						CrashDetect();
+							
+						if(stopCars == 1){
+							clearInterval(car2id);
+						}
 					}
 					if(Car2.pos > 210 && Car2.pos < 360){
 						console.log("Car2 tile3");
 						Car2Tile = 3;
-						CrashDetect();
+						CrashDetect();	
+						if(stopCars == 1){
+							clearInterval(car2id);
+						}
 					}
 					else{
 						Car2Tile = 0
@@ -744,11 +778,18 @@ function turn211(){
 				console.log("Car2 tile33");
 				Car2Tile = 3;
 				CrashDetect();
+				if(stopCars == 1){
+					clearInterval(car2id);
+				}
 			}
 			if(Car2.pos > 33 && Car2.pos < 100){
 				console.log("Car2 tile4");
 				Car2Tile = 4;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car2id);
+				}
+
 			}
 			else{
 				Car2Tile = 0;
@@ -777,7 +818,10 @@ function turn23() {
 					if(Car2.pos > 140 && Car2.pos < 180){
 						console.log("Car2 tile2");
 						Car2Tile = 2;
-						CrashDetect();
+						CrashDetect();	
+						if(stopCars == 1){
+							clearInterval(car2id);
+						}
 					}
 					else{
 						Car2Tile = 0;
@@ -806,7 +850,10 @@ function turn233(){
 			if(Car2.pos > 0 && Car2.pos < 50){
 				console.log("Car2 tile2");
 				Car2Tile = 2;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car2id);
+				}
 			}
 			else{
 				Car2Tile = 0;
@@ -834,12 +881,18 @@ function turn24() {
 				if(Car2.pos > 160 && Car2.pos < 220){
 					console.log("Car2 tile2");
 					Car2Tile = 2;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car2id);
+					}
 				}
 				if(Car2.pos > 220 && Car2.pos < 275){
 					console.log("Car2 tile3");
 					Car2Tile = 3;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car2id);
+					}
 				}
 				else{
 					Car2Tile = 0;
@@ -869,12 +922,18 @@ function turn31() {
 					if(Car3.pos > 140 && Car3.pos < 210){
 						console.log("Car3 tile3");
 						Car3Tile = 3;
-						CrashDetect();
+						CrashDetect();	
+						if(stopCars == 1){
+							clearInterval(car3id);
+						}
 					}
 					if(Car3.pos > 210 && Car3.pos < 275){
 						console.log("Car3 tile44");
 						Car3Tile = 4;
-						CrashDetect();
+						CrashDetect();	
+						if(stopCars == 1){
+							clearInterval(car3id);
+						}
 					}
 					else{
 						Car3Tile = 0;
@@ -904,12 +963,18 @@ function turn32() {
 					if(Car3.pos > 140 && Car3.pos < 200){
 						console.log("Car3 tile3");
 						Car3Tile = 3;
-						CrashDetect();
+						CrashDetect();	
+						if(stopCars == 1){
+							clearInterval(car3id);
+						}
 					}
 					if(Car3.pos > 200 && Car3.pos < 360){
 						console.log("Car3 tile4");
 						Car3Tile = 4;
-						CrashDetect();
+						CrashDetect();	
+						if(stopCars == 1){
+							clearInterval(car3id);
+						}
 					}
 					else{
 						Car3Tile = 0;
@@ -939,12 +1004,18 @@ function turn322(){
 			if(Car3.pos > 0 && Car3.pos < 32){
 				console.log("Car3 tile4");
 				Car3Tile = 4;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car3id);
+				}
 			}
 			if(Car3.pos > 32 && Car3.pos < 100){
 				console.log("Car3 tile1");
 				Car3Tile = 1;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car3id);
+				}
 			}
 			else{
 				Car3Tile = 0;
@@ -973,7 +1044,10 @@ function turn34() {
 				if(Car3.pos > 140 && Car3.pos < 180){
 					console.log("Car3 tile3");
 					Car3Tile = 3;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car3id);
+					}
 				}
 				else{
 					Car3Tile = 0;
@@ -1003,7 +1077,10 @@ function turn344(){
 			if(Car3.pos > 0 && Car3.pos < 50){
 				console.log("Car3 tile3");
 				Car3Tile = 3;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car3id);
+				}
 			}
 			else{
 				Car3Tile = 0;
@@ -1034,7 +1111,10 @@ function turn41() {
 				if(Car4.pos > 140 && Car4.pos < 180){
 					console.log("Car4 tile4");
 					Car4Tile = 4;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car4id);
+					}
 				}
 				else{
 					Car4Tile = 0;
@@ -1064,7 +1144,10 @@ function turn411(){
 			if(Car4.pos > 0 && Car4.pos < 50){
 				console.log("Car4 tile4");
 				Car4Tile = 4;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car4id);
+				}
 			}
 			else{
 				Car4Tile = 0;
@@ -1093,12 +1176,18 @@ function turn42() {
 				if(Car4.pos > 150 && Car4.pos < 210){
 					console.log("Car4 tile4");
 					Car4Tile = 4;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car4id);
+					}
 				}
 				if(Car4.pos > 210 && Car4.pos < 275){
 					console.log("Car4 tile1");
 					Car4Tile = 1;
-					CrashDetect();
+					CrashDetect();	
+					if(stopCars == 1){
+						clearInterval(car4id);
+					}
 				}
 				else{
 					Car4Tile = 0;
@@ -1129,12 +1218,18 @@ function turn43() {
 					if(Car4.pos > 140 && Car4.pos < 200){
 						console.log("Car4 tile4");
 						Car4Tile = 4;
-						CrashDetect();
+						CrashDetect();	
+						if(stopCars == 1){
+							clearInterval(car4id);
+						}
 					}
 					if(Car4.pos > 200 && Car4.pos < 360){
 						console.log("Car4 tile1");
 						Car4Tile = 1;
-						CrashDetect();
+						CrashDetect();	
+						if(stopCars == 1){
+							clearInterval(car4id);
+						}
 					}
 					else{
 						Car4Tile = 0;
@@ -1165,12 +1260,18 @@ function turn433(){
 			if(Car4.pos > 0 && Car4.pos < 32){
 				console.log("Car4 tile1");
 				Car4Tile = 1;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car4id);
+				}
 			}
 			if(Car4.pos > 32 && Car4.pos < 100){
 				console.log("Car4 tile2");
 				Car4Tile = 2;
-				CrashDetect();
+				CrashDetect();	
+				if(stopCars == 1){
+					clearInterval(car4id);
+				}
 			}
 			else{
 				Car4Tile = 0;
@@ -1179,128 +1280,189 @@ function turn433(){
 	}
 } 	
 
-function LoadArrows(){
-	FirstTimeGOingThroughStartArrows = 1
-	if (FirstTimeGOingThroughStartArrows == 1){
+function LoadArrow1(){
+
 	var Arrow1 = document.createElement('img');
 	Arrow1.src = "arrow.svg";
-	Arrow1.style.transform = "translate(260px, 300px)";
-	Arrow1.style.transform += "rotate(90deg)";
+	Arrow1.style.transform = "translate(75px, 300px)";
 	Arrow1.style.width = "auto";
 	Arrow1.style.height = "30px";
 	Arrow1.style.position = "absolute";
-	let ArrowData1=document.getElementById("Arrow1id").lastChild;
-	//document.getElementById('Arrow1id').appendChild(Arrow1);
+	Arrow1.style.zIndex = "5";
+	let lastArrow1=document.getElementById("Arrow1id").lastChild;
 	
+		if(FirstTimeGOingThroughStartArrows1 === 0){
+			document.getElementById("Arrow1id").removeChild(lastArrow1);
+		}
+		if (Car1RoadTurn === 4){
+			Arrow1.style.transform += "rotate(180deg)";
+			document.getElementById('Arrow1id').appendChild(Arrow1);
+		}
+		else if (Car1RoadTurn === 2){
+			Arrow1.style.transform += "rotate(0deg)";
+			document.getElementById('Arrow1id').appendChild(Arrow1);
+		}
+		else if (Car1RoadTurn === 3){
+			Arrow1.style.transform += "rotate(-90deg)";
+			document.getElementById('Arrow1id').appendChild(Arrow1);
+		}
+
+		FirstTimeGOingThroughStartArrows1 = 0;
+
+}
+function LoadArrow2(){	
 	var Arrow2 = document.createElement('img');
 	Arrow2.src = "arrow.svg";
-	Arrow2.style.transform = "translate(300px, 110px)";
-	Arrow2.style.transform += "rotate(90deg)";
+	Arrow2.style.transform = "translate(115px, 110px)";
 	Arrow2.style.width = "auto";
 	Arrow2.style.height = "30px";
 	Arrow2.style.position = "absolute";
-	let ArrowData2=document.getElementById("Arrow2id").lastChild;
+	let lastArrow2=document.getElementById("Arrow2id").lastChild;
 
+
+		if(FirstTimeGOingThroughStartArrows2 === 0){
+			document.getElementById("Arrow2id").removeChild(lastArrow2);
+		}
+		if (Car2RoadTurn === 1){
+			Arrow2.style.transform += "rotate(90deg)";
+			document.getElementById('Arrow2id').appendChild(Arrow2);
+		}
+		else if (Car2RoadTurn === 3){
+			Arrow2.style.transform += "rotate(270deg)";
+			document.getElementById('Arrow2id').appendChild(Arrow2);
+		}
+		else if (Car2RoadTurn === 4){
+			Arrow2.style.transform += "rotate(180deg)";
+			document.getElementById('Arrow2id').appendChild(Arrow2);
+		}
+
+		FirstTimeGOingThroughStartArrows2 = 0;
+
+}
+function LoadArrow3(){	
 	var Arrow3 = document.createElement('img');
 	Arrow3.src = "arrow.svg";
-	Arrow3.style.transform = "translate(110px, 80px)";
-	Arrow3.style.transform += "rotate(90deg)";
+	Arrow3.style.transform = "translate(-75px, 80px)";
 	Arrow3.style.width = "auto";
 	Arrow3.style.height = "30px";
 	Arrow3.style.position = "absolute";
-	let ArrowData3=document.getElementById("Arrow3id").lastChild;
+	let lastArrow3=document.getElementById("Arrow3id").lastChild;
 
+
+		if(FirstTimeGOingThroughStartArrows3 === 0){
+			document.getElementById("Arrow3id").removeChild(lastArrow3);
+		}
+		if (Car3RoadTurn === 1){
+			Arrow3.style.transform += "rotate(90deg)";
+			document.getElementById('Arrow3id').appendChild(Arrow3);
+		}
+		else if (Car3RoadTurn === 2){
+			Arrow3.style.transform += "rotate(0deg)";
+			document.getElementById('Arrow3id').appendChild(Arrow3);
+		}
+		else if (Car3RoadTurn === 4){
+			Arrow3.style.transform += "rotate(180deg)";
+			document.getElementById('Arrow3id').appendChild(Arrow3);
+		}
+
+		FirstTimeGOingThroughStartArrows3 = 0;
+
+}
+function LoadArrow4(){	
 	var Arrow4 = document.createElement('img');
 	Arrow4.src = "arrow.svg";
-	Arrow4.style.transform = "translate(80px, 260px)";
-	Arrow4.style.transform += "rotate(90deg)";
+	Arrow4.style.transform = "translate(-105px, 260px)";
 	Arrow4.style.width = "auto";
 	Arrow4.style.height = "30px";
 	Arrow4.style.position = "absolute";
-	let ArrowData4=document.getElementById("Arrow4id").lastChild;
-	FirstTimeGOingThroughStartArrows = 0;
-	}
+	let lastArrow4=document.getElementById("Arrow4id").lastChild;
 
-		if(FirstTimeGOingThroughStartArrows4 == 0){
-			FirstTimeGOingThrough1 = 1
-			document.getElementById("Arrow4id").removeChild(ArrowData4);
+
+		if(FirstTimeGOingThroughStartArrows4 === 0){
+			document.getElementById("Arrow4id").removeChild(lastArrow4);
 		}
 		if (Car4RoadTurn === 1){
 			Arrow4.style.transform += "rotate(90deg)";
-			document.getElementById('Arrow4id').appendChild(ArrowData4);
+			document.getElementById('Arrow4id').appendChild(Arrow4);
 		}
 		else if (Car4RoadTurn === 2){
 			Arrow4.style.transform += "rotate(0deg)";
-			document.getElementById('Arrow4id').appendChild(ArrowData4);
+			document.getElementById('Arrow4id').appendChild(Arrow4);
 		}
 		else if (Car4RoadTurn === 3){
 			Arrow4.style.transform += "rotate(-90deg)";
-			document.getElementById('Arrow4id').appendChild(ArrowData4);
+			document.getElementById('Arrow4id').appendChild(Arrow4);
 		}
 
+		FirstTimeGOingThroughStartArrows4 = 0;
 
-
-
-
-
-		var  FirstTimeGOingThroughStartArrows = 0;
-		var FirstTimeGOingThroughStartArrows1 = 0;
-		var FirstTimeGOingThroughStartArrows2 = 0;
-		var FirstTimeGOingThroughStartArrows3 = 0;
-		var FirstTimeGOingThroughStartArrows4 = 0;
 }
-function RotateArrows(){
-	
-}
+
+
+
+
 
 function CrashDetect(){
 	if (Car1Tile == 2 && Car2Tile == 2){
 		console.error();
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car1Tile == 3 && Car2Tile == 3){
 		console.error();
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car1Tile == 1 && Car3Tile == 1){
 		console.error();
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car1Tile == 3 && Car3Tile == 3){
 		console.error();
+		CallGameOver()
+		stopCars = 1
 	}
 	if (Car1Tile == 1 && Car4Tile == 1){
 		console.error();
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car1Tile == 2 && Car4Tile == 2){
 		console.error();
 		CallGameOver();
+		stopCars = 1
 	}
 	
 	if (Car2Tile == 3 && Car3Tile == 3){
 		console.error();
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car2Tile == 4 && Car3Tile == 4){
 		console.error();
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car2Tile == 2 && Car4Tile == 2){
 		console.error(Car2Tile == 2 && Car4Tile == 2);
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car2Tile == 4 && Car4Tile == 4){
 		console.error(Car2Tile == 4 && Car4Tile == 4);
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car4Tile == 4 && Car3Tile == 4){
 		console.error();
 		CallGameOver();
+		stopCars = 1
 	}
 	if (Car4Tile == 4 && Car1Tile == 4){
 		console.error(Car4Tile == 4 && Car1Tile == 4);
 		CallGameOver();
+		stopCars = 1
 	}
 
 	
