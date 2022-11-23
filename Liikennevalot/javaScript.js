@@ -49,7 +49,7 @@ Car2Tile = 0
 Car3Tile = 0
 Car4Tile = 0
 
-var autoNopeus = 5
+var autoNopeus = 10
 
 function changeCarSpeed(){
 	LoadArrows();
